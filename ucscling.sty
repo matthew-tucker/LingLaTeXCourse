@@ -1,0 +1,202 @@
+%	UCSC Linguistics style file
+%	Written by Matthew A Tucker
+%	send all package requests to: matucker@ucsc.edu
+
+% 	Version 1.0
+%	Last revision: 25 October 2009
+
+% Options supported:
+%	1) pset		--		defines a set of heading commands useful for problem sets
+%	2) sem		--		defines a set of semantics macros useful for denotational semantics
+%	3) syn		--		loads various packages useful for syntax papers
+%	4) phon		--		loads various packages useful for phonology papers
+
+%	ucscling also loads gb4e and sets bibliographic settings for use with linquiry2.sty
+%	also defines packedItem and packedEnum, list environments useful for handouts
+
+\ProvidesPackage{ucscling}
+
+%%% stuff we need for the package itself
+% some package-internal variables
+\newif\ifpset
+\newif\ifsem
+\newif\ifsyn
+\newif\ifphon
+
+%%%%%%%%%%%%%%%%%% OPTIONS %%%%%%%%%%%%%%%%%%
+
+%%% pset option
+%%% Make sections usable for problem set
+\DeclareOption{pset}{
+
+% so we can load packages later
+\psettrue
+
+% redfine section title styles to make them look more problem-set sensible
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+{-3.5ex \@plus -1ex \@minus -.2ex}%
+{2.3ex \@plus.2ex}%
+{\flushleft\large\textsf}}
+
+\renewcommand\subsection{\@startsection {subsection}{1}{\z@}%
+{-3.5ex \@plus -1ex \@minus -.2ex}%
+{2.3ex \@plus.2ex}%
+{\flushleft\normalsize\textsf}}
+
+\renewcommand\subsubsection{\@startsection {subsubsection}{1}{\z@}%
+{-3.5ex \@plus -1ex \@minus -.2ex}%
+{2.3ex \@plus.2ex}%
+{\flushleft\normalsize\textsf}}
+
+%$ redefine the second level of embedding in lists to look nicer
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{(\alph{enumii})}
+
+%% This puts in the header on homeworks 
+% Defines {Course, Prof, Homework, Due, Email, Student}; use like \author, \date, etc.
+\def\Course#1{\def\course{#1}}
+\def\Prof#1{\def\prof{#1}}
+\def\Homework#1{\def\homework{#1}}
+\def\Due#1{\def\due{#1}}
+\def\Email#1{\def\Email{#1}}
+\def\Student#1{\def\student{#1}}
+
+% Defines \hwheader (use instead of maketitle) after defining the above
+\newcommand\hwheader{
+\begin{center}
+{\large
+\textsf{\course} \hfill \textsf{\prof}\\
+\textsf{Homework \#\homework}  \hfill \textsf{Due: \due}}\\
+\textsf{\student} \hfill \textsf{email: \Email}\\
+\hrulefill
+\end{center}}
+}
+
+%%% sem option
+%%% loads/defines a bunch of things useful for semantics
+\DeclareOption{sem}{
+
+% so we can load packages later
+\semtrue
+
+% \evaluation produces the denotation symbol. 
+% #1:model/context/assignment #2: expression to evaluate
+\newcommand{\evaluation}[2][]{\ensuremath{\llbracket #2\rrbracket^{#1}}}
+
+% \setof and \tuple produces sets and tuples.
+% #1: the things in the set/tuple (include commas)
+\newcommand{\setof}[1]{\ensuremath{\left \{ #1 \right \}}}
+\newcommand{\tuple}[1]{\ensuremath{\left \langle #1 \right \rangle}}
+
+% \mathif produces if #1 then #2 else #3
+% for use with math mode only
+\newcommand\mathif[3]{\mathit{if}~#1~\mathit{then}~#2~\mathit{else}~#3}
+
+% FV produces a nice looking Free Variable function taking #1 as argument
+\newcommand\nm[1]{\mbox{\sl #1}}
+\newcommand\FV[1]{\nm{FV}(#1)}
+
+% defines join and meet
+\newcommand\join{\ensuremath\bigvee}
+\newcommand\meet{\ensuremath\bigwedge}
+
+%% lambda calculus commands
+% defines the long lambda, lambda #1 IN #2.#3 (Heim + Kratzer p. 36 (7))
+\newcommand\llm[3]{\ensuremath{\lambda#1\,:\,#1\in#2\,.\,\textrm{#3}}}
+% defines the cleaner lambda, lamda #1.#3 (op cit., p.  38 (14))
+\newcommand\lm[2]{\ensuremath{\lambda#1\,.#2}}
+
+%% defines the domain command to produce the domain with #1 as subscript
+\newcommand\domain[1]{{\bf D}$_{#1}$}
+
+% \Nat = the set of natural numbers
+\newcommand{\Nat}{\mathbb{N}}
+
+% some abbreviations of commonly used mathmode things
+\newcommand{\all}{\ensuremath{\forall}}
+\newcommand{\E}{\ensuremath{\exists}}
+\newcommand{\n}{\ensuremath{\neg}}
+\newcommand{\nd}{\ensuremath{\wedge}}
+\newcommand{\lr}{\ensuremath{\leftrightarrow}}
+}
+
+%%% syn option
+%%% loads/defines a bunch of things useful for syntax
+\DeclareOption{syn}{
+
+% so we can load packages later
+\syntrue
+
+%% defines hd to produce a head with ^0 notation of #1
+\newcommand{\hd}[1]{#1$^0$}
+}
+
+%%% phon option
+%%% loads/defines a bunch of things useful for phonology
+\DeclareOption{phon}{
+
+% so we can load packages later
+\phontrue
+}
+
+\ProcessOptions\relax
+
+%%% here we call packages based on what options are loaded
+% we have to do it this way because of the way DeclareOption works
+\ifsem
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\fi
+
+\ifphon
+\usepackage{OTtablx}
+\fi
+
+\ifsyn
+\usepackage{qtree}
+\fi
+
+
+%%%%%%%%%%%%%%%%%% LOAD EVERY TIME %%%%%%%%%%%%%%%%%%
+
+%%% basic package calls
+
+% basic linguistics packages
+\usepackage{tipa}
+% other useful packages
+\usepackage{fourier-orns}
+\usepackage[normalem]{ulem}
+\usepackage{times}
+\usepackage{graphicx}
+
+%%% sets up header basics
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0.4pt}
+\addtolength{\headheight}{2.5pt}
+
+%%% bibliography tools
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{,}{,}
+\setlength{\bibsep}{0.0pt}
+\bibliographystyle{linquiry2}
+
+%%% set up margins
+\usepackage[margin=1in]{geometry}
+
+%%% packed lists
+\newenvironment{packedEnum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\newenvironment{packedItem}{
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+%%% last but not least
+\usepackage{linguex}

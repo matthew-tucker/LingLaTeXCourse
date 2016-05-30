@@ -1,0 +1,70 @@
+%LaTeX Example file 3
+
+%This document contains some basic document structure examples
+%the itemize and enumerate environment
+%basic refernce counting
+
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage{tipa}
+
+\title{Structuring Your Document}
+\author{Marshall Eriksen\\Columbia University}
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Sections}
+	\label{sec}
+	
+	Look at us, riding around in a limo, eating hot dogs\ldots it's like we're the president.
+	
+	\subsection{Subsections}
+	\label{subsec}
+
+	\subsubsection{Subsubsections}
+	\label{subsubsec}
+	
+	My stomach was like, ``Hey bro, I don't know what you're eating 'cause I don't have any eyes but it's basically awesome so keep sending it down Gullet Alley." "But don't do quotes like this.""
+	
+	\paragraph{Paragraph} ``She's Like the Wind'' has been stuck in my brain for about 40 hours. I just got it out; now it's back in.
+	
+	\subparagraph{Subparagraph} This is as deeply-embedded as it gets.
+	
+	\clearpage
+	
+	\section{Itemize and Enumerate}
+	
+	\begin{itemize}
+		\item Why are Ewoks so awesome?
+		\begin{itemize}
+			\item The Rebellion would have totally failed without Ewoks.
+			\item[\textbf{Penguins}:] are like Ewoks but without the fur.
+		\end{itemize}
+		\item The Loch Ness monster:
+		\begin{itemize}
+			\item Is totally real
+			\begin{itemize}
+				\item exists
+				\begin{itemize}
+					\item is awesome.
+				\end{itemize}
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+	
+	\begin{enumerate}
+		\item Enumerate
+		\begin{enumerate}
+			\item Is useful for making outlines
+			\item and other things
+		\end{enumerate}
+	\end{enumerate}
+	
+	\section*{References}
+	
+		You can refer to a reference with \texttt{ref\{\}}, but then you must run \LaTeX twice to have it track the references for you. \S{\ref{sec}} was labeled, as was its daughter \S\S\ref{subsec}.
+
+\end{document}

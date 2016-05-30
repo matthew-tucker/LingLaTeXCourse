@@ -1,0 +1,1019 @@
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+
+\documentclass[12pt,twoside,letterpaper]{article}
+
+\usepackage{OTtablx}
+\usepackage{natbib}
+\usepackage{phontricks}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{link}
+\usepackage{fancyhdr}
+\usepackage{fourier-orns}
+\usepackage[normalem]{ulem}
+\usepackage{jtree}
+\usepackage{linguex}
+
+%bibstuff
+\bibpunct{(}{)}{;}{a}{,}{,}
+\setlength{\bibsep}{0.0pt}
+
+%refdash
+\renewcommand{\refdash}{}
+
+\newenvironment{packed_enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+%header stuff
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[OL]{Matthew A. Tucker}
+\fancyhead[ER]{The Root-and-Prosody Approach}
+\renewcommand{\headrulewidth}{0.4pt}
+\addtolength{\headheight}{2.5pt}
+
+
+\begin{document}
+
+%bibliography style
+\bibliographystyle{linquiry2}
+
+
+\title{The Root-and-Prosody Approach to Arabic Verbs\thanks{This paper owes many people thanks: Scott AnderBois, Michael Becker, Ryan Bennett, Jedediah Drolet, Robert Henderson, Junko It\^{o}, Ruth Kramer, Armin Mester, Jeremy O'Brien, Jaye Padgett, Tomas Riad, David Teeple, Adam Ussishkin, Michael Wagner, Munther Younes, Draga Zec, and Kie Zuraw have all provided helpful comments or discussion. I would also like to thank audiences at the 2009 Research Seminar at the University of California, Santa Cruz, the 2009 Linguistics at Santa Cruz Conference, and the Morphology Reading Group at UCSC for perceptive and enlightening discussion.  Despite all this assistance, the usual disclaimers apply.}}
+\author{Matthew A. Tucker\\UC-Santa Cruz}
+\date{Draft as of 30 May 2009\\{\em Comments welcome}, {\tt matucker@ucsc.edu}}
+
+\maketitle
+
+
+\begin{abstract}
+This article argues from data motivating the existence of the consonantal root in Nonconcatenative Templatic Morphologies (NTM) and the derivational verbal system of Iraqi Arabic for an approach to such root-and-pattern behavior called the ``Root-and-Prosody'' model. Based upon work in \cite{kramer07}, this model claims that root-and-pattern behavior arises from the necessary satisfaction of prosodic markedness constraints at the expense of the faithfulness constraints \textsc{Contiguity} and \textsc{Integrity}. Additionally, this article shows that a solution exists to the problem of NTM languages within Generalized Template Theory \citep{mccarthy95} which does not need Output-Output Correspondence \citep{benua00,ussishkin05}. In doing so, this work also argues for the extension of indexed markedness constraints \cite{paterToAppear} to prosodic alternations. Prosodic augmentation is shown to follow from particular rankings of such indexed prosodic markedness constraints, eliminating the need for prosodic material in the input. Finally, discussion of difficulties faced by the Fixed-Prosodic analyses of such systems \citep{ussishkin00,buckley03,ussishkin05} motivates the necessity of the Root-and-Prosody approach.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+The Semitic languages have been the object of study for morphologists, syntacticians, and phonologists almost since the advent of generative grammar as a field (see, for instance \cite{chomsky79,mccarthy79,mccarthy81,ussishkin00}, to name just a few). This is because such languages are prototypical of the class of word-formation strategies known as \textsc{Nonconcatenative Templatic Morphology} (NTM) \citep{mccarthy81}. Descriptively, these languages form words by interleaving various vocalic and consonantal affixes around a two, three, or four consonantal root, as Table \ref{tab:arabic-verbs} demonstrates for the dummy root $\sqrt{\textrm{\textipa{fQl}}}$, roughly meaning ``doing, action'' in Iraqi Arabic, with each form assigned its number according to the Western grammatical tradition for Arabic.\footnote{Thus I do not use the term employed by many Arabists for these patterns -- \emph{binyanim} (see, for instance, \cite{mccarthy81}). There is no theoretical claim meant by this choice. Also, note that Iraqi Arabic lacks a form IV, unlike many other dialects of Arabic (see \cite{erwin04}). Additionally, while a form numbered IX does exist in Iraqi, it is unproductive and demonstrably denominal. Thus, I do not treat form IX in this work.}
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ccc}
+\hline
+\emph{Number}&\emph{Verb}&\emph{Template}\\
+\hline
+I&\textipa{faQal}&C$_1$VC$_2$VC$_3$\\
+II&\textipa{faQQal}&C$_1$VC$_2$C$_2$VC$_3$\\
+III&\textipa{faaQal}&C$_1$VVC$_2$VC$_3$\\
+V&\textipa{tfaQQal}&\textipa{t}C$_1$VC$_2$C$_2$VC$_3$\\
+VI&\textipa{tfaaQal}&\textipa{t}C$_1$VVC$_2$VC$_3$\\
+VII&\textipa{nfaQal}&\textipa{n}C$_1$VC$_2$VC$_3$\\
+VIII&\textipa{ftaQal}&C$_1$\textipa{t}VC$_2$VC$_3$\\
+X&\textipa{stafQal}&\textipa{sta}C$_1$C$_2$VC$_3$\\
+\hline
+\end{tabular}
+\caption{$\sqrt{\textrm{\textipa{fQl}}}$, ``doing, action"}
+\end{center}
+\label{tab:arabic-verbs}
+\end{table}
+
+Thus one can see in such examples that derivational verbal morphology in Arabic can be as simple as the insertion of two vowels into the consonantal root (forms I, III), the augmentation of consonantal material (form II), or addition of consonantal affixal material in addition to vowels (forms V, VI, VII, VIII, X). However, each of the forms faithfully preserves the triconsonantal root $\sqrt{\textrm{\textipa{fQl}}}$ in the output string.
+
+Such blatantly nonconcatenative morphological behavior stands in stark contrast to the better-studied morphologies of other languages which form derived forms by simple affixation, characterizeable in terms of linear concatenation statements. Moreover, it has been known since the earliest generative works on Arabic and Hebrew \citep{mccarthy79,mccarthy81} that NTM languages also show a strong influence of word-level prosody on morphology. This can be seen easily in Table \ref{tab:arabic-verbs}, where no output form is larger than two syllables. Though it must be the goal of any analysis which desires explanatory adequacy to relate these two facts, it is not as immediately clear what the axiomatic units of morphology should be in such an approach, or what the relationship needs to be between the input and realization of prosody.
+
+While the above characterization of the Arabic derivational verbal paradigm is the one used by the classical and modern Arab grammarians, it is not immediately obvious that such an analysis should be the one adopted in generative approaches to Arabic morphophonology. Historically, however, this \emph{was} the approach adopted in the seminal works of \cite{mccarthy79,mccarthy81,mccarthy85}, which described the Arabic morphology discussed here in terms of association of the root and vowel morphemes to an autosegmental CV-tier \citep{goldsmith76}. In this framework, vowels, the root, and affixes each comprised different morphemes \emph{sui generis}, whose association to one another and concatenation were governed by the familiar constraints on autosegmental representations.
+
+The advent of the framework of Prosodic Morphology \citep{mccarthy86} changed this view, arguing instead that the CV-tier lacked explanatory force, since templates were simply stipulated in the lexicon as particular CV-sequences. Prosodic Morphology aimed to show that all templates in natural language were ``comprised of the authentic units of prosody.'' By this it was meant that lexicons were allowed to list templates, but that those templates must be well-defined prosodic units, consisting of either morae, syllables, feet, or prosodic words.\footnote{I use the following abbreviations in this work for the prosodic constituents relevant to word-formation: $\mu$ $=$ mora, $\sigma$ $=$ syllable, F $=$ foot, $\omega$/\textsc{PrWd} $=$ prosodic word.} This approach, however, faced much the same problem as its predecessor; questions lingered concerning the explanatory force of the template inventory.
+
+Following the introduction of Optimality Theory (OT; \cite{prince04}) into generative phonology, a new approach to nonconcatenative and templatic morphology known as Generalized Template Theory (GTT; \cite{mccarthy94}) emerged which could treat the templatic inventory in a satisfactory way. This tradition argued that explanatory power could be extended in analyses of nonconcatenative templatic languages by deriving the templates, not simply from a stated inventory of prosodic units and the lexicon, but from the interaction of independently motivated constraints on the well-formedness of prosodic output. Thus constraints dictating minimal and maximal prosodic words, for instance, were used to derive the morphology of languages (e.g., Hebrew, \cite{ussishkin00, ussishkin05}) where bisyllabic prosodic words formed the optimal output.
+
+In this GTT framework several analyses have emerged which argue against the existence of the consonantal root, or at least its usefulness to prosodic and phonological theory. Building on work on Hebrew by \cite{batel94, batel03}, \cite{ussishkin99,ussishkin00,ussishkin05} argues that derivational morphology in Hebrew and Arabic does not require access to the consonantal root (\emph{pace} early generative accounts) as a morpheme. Instead, the consonantal root became seen as the ``residue'' left over after prosodic constraints forced affixal material to overwrite vowels.
+
+This GTT approach to Semitic morphophonology has not been free of worries, however, with recent work \citep{arad03,nevins05,arad05} arguing that the GTT approach misses generalizations in certain cases, as well as makes erroneous predictions in others. Thus, the question of the proper characterization of Semitic verbal morphology is still very much an open one.
+
+This work suggests a new model which \emph{can} account for both these theoretical and empirical needs, especially within the domain of words formed from abstract roots. Taking up the proposal of \cite{kramer07} for Coptic, this approach is called the \textsc{Root and Prosody} model, and its major claims are twofold:
+
+\ex. Central Claims of the RP Approach:
+\a. \textsc{Roots and Vowels are Morphemes}: the input to NTM forms consists of the consonantal root and a ``discontinuous'' vowel affix (e.g., /\textipa{a}/ for perfective aspect).
+\b. \textsc{Templates are Given by Prosody}: Templates are emergent properties of words in NTM languages which surface from the necessary satisfaction of high-ranking prosodic markedness constraints (an extreme version of ``templates are made up of the authentic units of prosody'' \citep{mccarthy86}).
+
+This approach thus borrows from GTT and Fixed Prosody (FP henceforth) the claim that templates are not axiomatic morphological entities, but rather should be derived from the interaction of prosodic well-formedness constraints with segmental faithfulness considerations. As such, templates are better understood in this approach as emergent properties of prosody. It does admit the consonantal root, however, and thus locates the difference between NTM and more concatenative morphologies purely in the lexicon and ranking in \textsc{Con} -- languages with NTM are special only insofar as they contain a larger concentration of discontinuous morphemes in their lexicons and rank highly their prosodic markedness constraints.
+
+The admission of the consonantal root into morphophonological analysis, in addition to providing a means to empirical coverage of the derivational verbal system outlined in Table \ref{tab:arabic-verbs}, also allows for some insight into a particularly recalcitrant problem in the study of Arabic. As discussed by \cite{mccarthy79,mccarthy81}, Arabic's form VIII/{\em \textipa{ftaQal}} pattern shows the effect of phonological processes which \emph{only} occur in this form. This work shows that such processes are understood in the RP approach -- a difficult task in theories which do not admit the special status of root consonants over and above other consonants in the language at large, such as the FP approach.
+
+This work is organized as follows: \S{\ref{sec:motivating-root}} argues for the existence of the consonantal root in Arabic, showing that it is needed for any adequate account of Semitic morphophonology and thus legitimizing its usage in the RP approach (\emph{pace} the Fixed-Prosodic literature). \S{\ref{sec:iraqi-arabic-prosody}} outlines the word-level prosody of the Arabic dialect used here to exemplify the RP approach, the dialect spoken by the educated population in and around Baghdad, Iraqi Arabic (IA). \S{\ref{sec:root-pros-appr}} outlines the particulars of the Root-and-Prosody approach, including its theoretical claims, contributions, and analyses of particular Arabic verbal forms. \S{\ref{sec:inad-fixed-pros}} demonstrates the superiority of the RP approach to the Fixed-Prosody approach of \cite{ussishkin00,ussishkin05}, particularly in the domain of the form VIII/{\em \textipa{ftaQal}} pattern processes first noted by \cite{mccarthy79}. Finally, \S{\ref{sec:conclusion}} concludes the work. 
+
+\section{Motivating the Root}
+\label{sec:motivating-root}
+
+The RP approach outlined in the later portions of this paper crucially makes use of an abstract consonantal root morpheme in deriving the entirety of the IA derivational verbal paradigm. However, the existence of such a root and its usefulness for generative morphophonology have recently been called into question by the works of \cite{ussishkin99,ussishkin00,ussishkin05}, \emph{inter alia}. As such, it is important that this work motivate its primary theoretical assumption. To this end, this section examines evidence, both old and new, for the existence of such a root.\footnote{A word of disclaimer is necessary for this section: it is not the intent of this work to (even partially) undermine the arguments for word-based approaches to certain morphological processes in Semitic languages (see, for instance, \cite{batel94,ussishkin99,ussishkin00,batel03,buckley03,ussishkin05}, \emph{inter alia}). In fact, as \cite{arad03,arad05} notes for Hebrew and \cite{tuckerInPrep} notes for Arabic, a hybrid model which admits both root-based and word-based derivation is most likely correct for Semitic. However, engaging in a proper discussion of this material would take the present work too far afield, and so the present approach assumes, for simplicity, that all derivation begins with the root. Whether some forms are not root-derived is inconsequential to the present analysis, however, as such forms would then fall outside of the purview of the RP approach. See \cite{tuckerInPrep} for discussion of possible ways to unify the RP and FP approaches to obtain a satisfactory understanding of \emph{all} verbal morphophonological processes in Iraqi Arabic.}
+
+In the discussion which follows, in order to juxtapose the predictions of the word and morpheme-based models, it is necessary to assume, for the sake of argument, a base form from which a word-based approach can derive subsequent outputs. Following arguments in \cite{ussishkin00}, this work takes the form I/{\em \textipa{faQal}} (Hebrew {\em \textipa{paQel}}) pattern to be the unmarked, base form. While it is certainly not the case that this is the only possible approach for word-based models, the arguments in \cite{ussishkin00} make a compelling case for the validity of this assumption.
+
+\subsection{Previous Evidence}
+\label{sec:prev-publ-evid}
+
+\subsubsection{Meaning Similarity Across Derived Forms}
+\label{sec:mean-simil-across}
+
+The initial evidence for the consonantal root, transparent to the Ancient Arabic and Hebrew grammarians, took the form of a strong meaning similarity among words derived from the same putative consonantal root. Thus, ubiquitous in the literature is the example of the Arabic root $\sqrt{\textrm{\textipa{ktb}}}$, a sampling of whose derived forms appear in Table \ref{tab:ktb} \citep{wehr76}.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}[ht]{lll}
+    \hline
+    \emph{Root}&\emph{Meaning}&\emph{Template}\\
+    \hline
+    kataba&he wrote&CaCaCa\\
+    kattaba&he made someone write&CaCCaCa\\
+    nkataba&he subscribed&nCaCaCa\\
+    ktataba&he copied&CtaCaCa\\
+    kitaab&book&CiCaaC\\
+    kuttaab&Koranic school&CuCCaaC\\
+    kitaabii&written, in writing&CiCaaCa\\
+    kutayyib&booklet&CuCayyiC\\
+    maktaba&library, bookstore&maCCaCa\\
+    mukaatib&correspondant, reporter&muCaaCiC\\
+    \hline
+  \end{tabular}
+  \caption{Derived forms from the Root $\sqrt{\textrm{\textipa{ktb}}}$}
+  \label{tab:ktb}
+\end{table}
+
+All in all, the Hans Wehr dictionary of Modern Standard Written Arabic \citep{wehr76} lists 32 distinct derivational forms from the root $\sqrt{\textrm{\textipa{ktb}}}$, 30 of which have semantics which implicate a meaning of ``writing, letters, or books.''\footnote{The two remaining forms, {\em \textipa{katiiba}}, ``squadron, amulet,'' and {\em\textipa{kataaPibii}}, ``pertaining to the Lebanese Phalange Party,'' are related to an Arabicization of the Greek loan {\em phalanx} and thus are not indicative of the (morpho-)semantics of native word formation.} These forms vary across all lexical categories (noun, verb, adjective) and include a variety of prefixes and prosodic/vocalic templates. 
+
+As \cite{mccarthy79,mccarthy81} notes, it is difficult to imagine a word-based approach which can account for this similarity in meaning. This is especially the case when it is acknowledged that word-based approaches which take the {\em \textipa{faQal}} form as base must have an explanation for why the semantics of all derived forms relating to {\em \textipa{kataba}} do not necessarily include a component meaning of ``to write'' (witness, for example, {\em\textipa{kuttaab}}, ``Koranic school'' in Table \ref{tab:ktb}). Much of the strength of a word-based approach is derived from the fact that compositional derived forms contain a derivational stage (or relation, in the case of OO-Correspondence; see \cite{ussishkin00, ussishkin05} for discussion) in which the output form is directly related to a word expressing one of its component meanings. In the absence of such transparency, it is unclear what can be said about such striking similarities in meaning.
+
+This can be contrasted against a root-based approach such as that taken by \cite{arad03,arad05} for Hebrew. In this work, Arad equates the root with a ``semantic potentiality'' (see also \cite{doron03} on this point) which instantiates the abstract meaning associated with particular roots. In these approaches, the semantics of derived forms can relate intuitions about meaning similarity to the fact that all derived forms realize, in part, the same semantic potentiality. Thus, meaning similarity across derived forms provides one reason to acknowledge the existence of an abstract consonantal root which participates in morphological derivation and contributes to the semantic core of derived forms.
+
+\subsubsection{Greenbergian Restrictions on Root Consonants}
+\label{sec:greenb-restr-root}
+
+Turning away from the semantics to the domain of phonology, another argument for the existence of the root comes from demonstrable Obligatory Contour Principle (OCP) restrictions on the space of possible root consonants. In his seminal study of the roots of Semitic languages, \cite{greenberg50} noted that while roots of the form C$_1$C$_2$C$_2$ are not uncommon in Arabic and Hebrew, no roots of the form C$_1$C$_1$C$_2$ exist (or are comparatively extremely rare), with similar facts holding for bi- and quadriliteral roots. \cite{mccarthy79}, \emph{et seq.} analyze such facts as an instance of application of the Obligatory Contour Principle \citep{leben73}, applicable over a domain defined as the consonantal root. Thus roots of the form C$_1$C$_2$C$_2$ are formed from an underlying biliteral root to which spreading of the second consonant has applied.
+
+This intuition concerning the root as a domain for the application of dissimilation-forcing constraints has been confirmed in recent psycholinguistic and corpus-based research. Thus \cite{pierrehumbert93} notes that the OCP restrictions on root consonants run deeper than simple adjacency, with OCP restrictions applying (with slightly less yet empirically discernible) force over longer distances in the root. For instance, roots of the form C$_1$C$_2$C$_1$, while allowed by a simple OCP-based formulation of root phonotactics, are statistically less frequent in occurrence and are consistently judged less natural by native speakers. Additionally work by \cite{berent01} and colleagues has demonstrated that the OCP is not just a simple redundancy constraint on representation, but is synchronically active in the grammars of native Hebrew speakers.
+
+These results are hard to reconcile with any approach which denies the existence of a consonantal root \emph{qua} phonological domain. Thus, it is possible to demonstrate that the OCP does not apply to any domain larger than the root in Arabic. Witness \Next, where the deverbal nominalizing morphemes /\textipa{ma-}/ and /\textipa{mu-}/ can appear with /\textipa{m}/-initial roots, in apparent violation of the OCP, which demonstrates that the domain of the OCP in Arabic is not the prosodic word:
+
+\pagebreak
+
+\ex. Lack of Word-Level OCP Effects in Arabic:
+\a. \textipa{mumattiQ}, ``pleasant, delicious'' (from {\em \textipa{mattaQa}}, ``to enjoy'')
+\b. \textipa{mumaaTala}, ``resemblance'' (from {\em \textipa{maTala}}, ``to resemble'')
+\c. \textipa{mamduud}, ``extended, outstretched'' (from {\em \textipa{madda}}, ``to stretch'')
+
+The facts from Greenbergian root-bounded OCP effects and the data in \Last lead necessarily to the conclusion that a consonantal root must exist for the OCP to target as domain. In a word-based approach, such Greenbergian generalizations would necessarily be lost, or necessarily stated in a way which contradicts the conclusions in \Last, since such an approach conflates (by definition) the morphophonological status of root and nonroot consonants, leading to no satisfactory way to state the domain over which the OCP should apply.
+
+\subsubsection{Hypocoristics and Language Games}
+\label{sec:hypoc-lang-games}
+
+The formation of hypocoristics (nicknames) and the existence of language games in Arabic likewise implicate the consonantal root, a fact noticed in the literature as far back as \cite[pp.379--80]{mccarthy81}. A language game in the Bedouin Hijazi dialect of Arabic is played by freely metathesizing root (and only root) consonants around the vocalic pattern, examples of the output of which are in \Next (\cite{mccarthy81}'s (5)):\footnote{In what follows, /-na/ is a verbal agreement suffix, and therefore not part of the root.}
+
+\ex. Bedouin Hijazi Language Game Outputs from {\em \textipa{difaQna}}, ``we pushed'' ($\sqrt{\textrm{\textipa{dfQ}}}$):
+\a. \textipa{daQafna}
+\b.\textipa{fidaQna}
+\c. \textipa{faQadna}
+\d. *\textipa{nafaQda}
+
+This pattern of metathesis is furthermore recreated in the speech of a bilingual French-Arabic deep-Aphasic whose language is the object of two illuminating studies by \cite{prunet00,idrissi08}. The speaker freely metathesizes adjacent segments in his French speech, but metathesizes only root consonants when speaking Arabic, much like the Hijazi language game. Particularly revealing in the findings is the behavior of weak roots in the Arabic speech of this aphasic.
+
+Weak roots are so-termed by the Arabic grammarians because one of their constituent consonants is /\textipa{y}, \textipa{w}/, which alternate with long vowels elsewhere in the language. In many forms, such semivowels are not apparent on the surface, their presence instead is reflected in the surface length of an underlyingly short vowel. In the speech of \cite{idrissi08}'s aphasic data, however, such semivowels represented in the target by a long vowel resurface in error forms, as in \Next:
+
+\ex. Weak Root Output for an Arabic Aphasic \citep[p.225]{idrissi08}:
+\a. {\em \textipa{bawl}}, ``urine'' $\rightarrow$ error {\em \textipa{balaa}} (/w/ $\rightarrow$ \textsc{VV})
+\b. {\em \textipa{s-t-aqaam}}, ``he stood straight $\rightarrow$ error {\em \textipa{waqiim}} (\textsc{VV} $\rightarrow$ [w])
+
+Word-based approaches to Arabic morphophonology will struggle with such data. In the case of the aphasic speech in \Last, word-based approaches which take the input for derivation as {\em \textipa{faQal}} forms will not only be at a loss to explain why vowels do not metathesize as in the speaker's rendering of French, but also why vowel length is not preserved in \Last[b] or the semivowel preserved in \Last[a]. Similar conclusions can be reached for such approaches concerning the Bedouin Hijazi language game.
+
+Hypocoristic formation in Ammani-Jordanian Arabic, discussed by \cite{davis01} also shows specific selection for root consonants. Data is not presented here for space reasons, but the authors show that nonroot consonants are systematically absent from hypocoristics formed from names based on existing words in Arabic. As with the data above concerning metathesis, word-based approaches have no means to explain why nonroot consonants participate in such alternations.
+
+\subsubsection{Priming Facts and the Root}
+\label{sec:priming-facts-root}
+
+Rounding out the previous research which implicates the consonantal root are recent facts from priming studies conducted in \cite{frost97,deutsch98}. \cite{frost97} uses a masked priming study, wherein speakers are shown a screen with a series of nonsense tokens which remain for several seconds. At some point during the display of the nonsense tokens, a brief display of a prime appears, with an extremely short interval (50-60 ms) separating the display of the prime and the subsequent display of the target. As \cite[p.1]{frost97} put it: ``when primes and targets shared an identical word pattern, neither lexical decision or naming of targets was facilitated. In contrast, root primes facilitated both lexical decisions and the naming of target words that were derived from these roots.'' Thus, while it is not clear whether templates prime at all, it is clear that roots prime tasks related to words derived therefrom.\footnote{It is somewhat more unclear whether vowels prime in Semitic (Adam Ussishkin, p.c.). It should be noted that the Root-and-Prosody approach presented below in \S{\ref{sec:root-pros-appr}} is consistent with exactly these findings, where consensus has been reached. Thus the RP approach stipulates the existence of a consonantal root, therefore predicting priming in that domain on the one hand, and disavows the existence of a template \emph{qua} morpheme, therefore predicting no priming in that domain on the other. The RP approach \emph{does} include a vocalic morpheme, and thus further research is needed to determine whether vocalic patterns prime.}
+
+While not a serious objection to word-based approaches, it is clear that root-based approaches to Semitic get much more of this data for free. Since root-based approaches can ascribe a semantic and phonological content to the root, these approaches \emph{automatically} predict priming by roots, both in lexical decision and naming tasks. While it is feasible that word-based approaches could tell a story about such facts where the form I/{\em\textipa{faQal}} pattern is responsible for priming, it is not immediately entailed by such approaches.
+
+
+\subsection{Previously Unnoticed Evidence}
+\label{sec:prev-unnot-evid}
+
+This section adds to the data discussed in \S{\ref{sec:prev-publ-evid}} for the consonantal root two novel arguments previously unnoticed in the generative literature as necessitating the existence of the root. Some of these arguments center on the behavior of \textsc{Weak Roots} in Iraqi Arabic. As discussed in \S{\ref{sec:hypoc-lang-games}}, weak roots are those roots in Arabic which contain a semivowel in one of the three root consonant positions. As \S{\ref{sec:form-viii-assim}} notes, for at least one phonological process the class of weak consonants can be extended to include /\textipa{P}/, as well. Where not otherwise noted, data in this section is from \cite{erwin04}.
+
+\subsubsection{Voicing and Emphasis Assimilation Contradictions}
+\label{sec:voic-emph-assim}
+
+The first of these facts comes from a contradiction (for word-based approaches) in the directionality of voicing and emphasis (pharyngealization) agreement among consonants in Iraqi Arabic. As \Next shows, the normal direction of voicing assimilation in Iraqi Arabic is \emph{regressive}, spreading [$\pm$voice] from right to left, bounded by vowels:
+
+\ex. Regressive Voicing Assimilation in Iraqi \cite[p.36]{erwin04}
+\a. \textipa{PaDgal\super{Q}}, ``heavier'' (*\textipa{PaTgal}; $\sqrt{\textrm{\textipa{Tgl\super{Q}}}}$)
+\b. \textipa{Pazdaas}, ``sixths'' (*\textipa{Pasdaas}; $\sqrt{\textrm{\textipa{sds}}}$)
+\c. \textipa{maTkuur}, ``mentioned'' (*\textipa{maDkuur}; $\sqrt{\textrm{\textipa{Dkr}}}$)
+\d. \textipa{Pakt\super{Q}aQ}, ``I cut'' (*\textipa{Pagt\super{Q}taQ}; $\sqrt{\textrm{\textipa{gt\super{Q}Q}}}$)
+
+However, this directionality does not obtain in the form VIII/{\em \textipa{ftaQal}} pattern, formed (descriptively) by infixation of /-\textipa{t}-/ after the first root consonant. In this form, as \Next demonstrates, voicing assimilation is \emph{progressive}, proceeding from left to right from the first root consonant to the infix:
+
+\ex. \label{ex:assimilation-viii} Progressive Voicing/Emphasis Assimilation in Form VIII \citep[p. 74]{erwin04}
+\a. \label{ex:emphasis-viii}\textipa{ddiQa}, ``to claim'' (*\textipa{dtiQa}; $\sqrt{\textrm{\textipa{dQw}}}$)
+\b. \textipa{zdiZam}, ``to be crowded'' (*\textipa{ztiZam}; $\sqrt{\textrm{\textipa{zZm}}}$)
+
+What is problematic about these data concerning word-based approaches is the fact that voicing assimilation proceeds in different directions at the prosodic word and root+affix level in \LLast and \Last. For approaches to Arabic morphophonology which assume that all inputs to word-formation are fully-formed prosodic words, it is not clear how one could derive the more constrained voicing assimilation seen in \Last. Moreover, for any such approaches couched in Optimality Theory (such as \cite{ussishkin99,ussishkin00,ussishkin05}'s FP approach), such multidirectionality will necessarily involve a ranking contradiction between the constraints which force voicing assimilation and the constraints which prevent its spreading in one direction (which are necessary to obtain the regressive directionality at the $\omega$-level). There is perhaps a solution to this problem in terms of treating the base and affix portions with different faithfulness constraints, but as the next section and \S{\ref{sec:emerg-fixed-pros}} below discuss, this misses the crucial generalization that \emph{root consonants} are treated differently from other segments in NTM languages.
+
+Note, too, that an appeal to something like level-ordering instantiated in Stratal Optimality Theory \citep{kiparsky00} will not solve such problems. Independent of the theory-internal and methodological considerations against employing both Stratal OT and OO-Correspondence in the same model, the problem for word-based approaches derives not from their parallelism (since such parallelism is not a necessary facet of such approaches), but rather from their focus on the word as primitive. Without a phonological root constituent, there is no way for such approaches to properly state the descriptive generalization arising from data such as \ref{ex:assimilation-viii}. If there is no root, there can be no processes which are sensitive to it.
+
+\subsubsection{Form VIII Assimilations and /\textipa{P}, \textipa{y}/}
+\label{sec:form-viii-assim}
+
+Along the same lines are facts from weak-root assimilatory processes in Iraqi Arabic. It has been known since \cite{mccarthy79,mccarthy81} that semivowel-initial roots in Arabic's form VIII {\em \textipa{ftaQal}} pattern assimilate to the infixal /-\textipa{t}-/. What is never presented in the literature, however, is an attested example of such assimilation occurring with the semivowel /\textipa{y}/. This is because, in Modern Standard Arabic and many of the dialectal variants, roots containing an initial /\textipa{y}/ are extremely rare. In Iraqi Arabic, however, such roots slightly more common. Thus, one sees the assimilation patterns in form VIII shown in \Next:
+
+\ex. More Weak Consonants in Iraqi \citep[p.74]{erwin04}
+\a. \textipa{ttijah}, ``to head (for)'' ($\sqrt{\textrm{\textipa{wjh}}}$; *\textipa{utijah}, *\textipa{wtijah})
+\b. \textipa{ttiqan}, ``to master, know well'' ($\sqrt{\textrm{\textipa{yqn}}}$, *\textipa{itiqan}, *\textipa{ytiqan})
+\c. \textipa{ttixaD}, ``to take, adopt'' ($\sqrt{\textrm{\textipa{PxD}}}$, *\textipa{PtixaD})
+
+In addition to simply demonstrating the completeness of semivowel assimilation in Iraqi, \Last also includes the example \Last[c], which \cite{erwin04} notes is an attested example of /\textipa{P}/ also participating in such assimilation. Thus one can see that the consonants /\textipa{y, w, P}/ pattern as a natural class in the case of the form VIII assimilation processes. Such assimilation of the weak consonants to /\textipa{t}/ is otherwise unattested in Iraqi, as \Next shows:\footnote{It might be objected that these alternations could be explained in terms of syllable structure, as the form VIII semivowels appear in onset position whereas the lack of semivowel assimilation data shows the semivowels in coda position. This is not a deep worry, however, as form VIII verbs surface with a prothetic /\textipa{I}/ which ensures that the onset glides \emph{would} appear in coda position if they did not assimilate. I have abstracted away from this prothetic vowel (and its sometimes accompanying glottal onset), as is usually done in studies of the {\em \textipa{ftaQal}} pattern (see, e.g., \cite{mccarthy93a,ussishkin00}), to simplify the analysis for expository purposes.}
+
+\ex. No Weak Consonant -- /\textipa{t}/ Assimilation Elsewhere:
+\a. \textipa{mawwtooni}, ``they would have killed me'' (*\textipa{mattooni})
+\b. \textipa{beythum}, ``their house'' (*\textipa{betthum})
+\c. \textipa{jaaPta}, ``she came'' (*\textipa{jaatta})
+
+In the Fixed-Prosodic literature, the stability of consonants across different derived words is given by high-ranking \textsc{OO-Faith} constraints which mitigate against augmentation of ``root'' consonants (since all affixes are vocalic). While it would be possible to devise an analysis of these particular facts by a specific ranking of \textsc{Faith-Affix} and \textsc{Faith-Root} (with ``root'' being understood here to be an existing output base form, in line with the assumptions of the FP literature), it is not immediately clear that such an approach can be extended to the facts in the previous section, where the opposite ranking is suggested. Furthermore, word-based approaches to these facts will miss the key descriptive generalization at play here -- it is the \emph{root consonants} which are undergoing alternation based on the presence of the /t/ infix.
+
+Taken together, the arguments in this section can be seen as motivating the major axiomatic morpheme in the RP approach -- the abstract consonantal root. The other major claim of the RP approach is that template form is dictated by independently-needed constraints on word-prosody. This is the topic of the next section.
+
+\section{Iraqi Arabic Prosody}
+\label{sec:iraqi-arabic-prosody}
+
+Iraqi Arabic, the dialect spoken by the educated class in Baghdad, is typical of Arabic dialects in showing an inexorable intertwining of prosody and word formation. This section presents the basic facts from Iraqi word-level prosody in two parts. \S{\ref{sec:feet-stress}} presents data from stress placement to argue for the importance of the moraic trochee in Iraqi and proposes a specific OT account of these facts. \S{\ref{sec:prosodic-word-iraqi}} discusses and analyzes similarly facts concerning word-level prosodic structure.
+
+\subsection{Feet and Stress}
+\label{sec:feet-stress}
+
+Iraqi Arabic words have a single main stress per word, which can fall on the ultima \ref{ex:ultima}, penult \ref{ex:penult}, or antepenult, \ref{ex:antepenult}, data for all of which comes from \cite[pp.40--1]{erwin04}:
+
+\ex. \label{ex:ultima}Stress on the ultima:
+\a. \label{ex:stress-cvcc} \textipa{t\super{Q}aQ\textprimstress baan}, ``tired''
+\b. \label{ex:stress-cvv} \textipa{Saa\textprimstress foo}, ``they saw him''
+
+\ex. \label{ex:penult}Stress on the penult:
+\a. \label{ex:stress-heavy-penult} \textipa{\textprimstress naadi}, ``club'' / \textipa{\textprimstress badla}, ``suit''
+\b. \label{ex:stress-two-syllables} \textipa{\textprimstress nisa}, ``he forgot''
+
+\ex. \label{ex:antepenult} Stress on the antepenult:
+\a. \label{ex:stress-heavy-ante} \textipa{\textprimstress Qaalami}, ``world'' / \textipa{\textprimstress madrasa}, ``school''
+\b. \label{ex:cvcvcv} \textipa{\textprimstress Sarika}, ``company''
+
+Such facts lend themselves to the following generalizations:
+
+\ex. Stress generalizations in Iraqi Arabic:
+\a. Stress the ultima if:
+\a. it is superheavy \ref{ex:stress-cvcc}
+\b. it is heavy and vowel-final \ref{ex:stress-cvv}
+\z.
+\b. Otherwise, stress the penult if:
+\a. it is heavy \ref{ex:stress-heavy-penult}
+\b. the word is two light syllables long \ref{ex:stress-two-syllables}
+\z.
+\c. Otherwise, stress the antepenult if:
+\a. it is heavy \ref{ex:stress-heavy-ante}
+\b. the word ends in three light syllables \ref{ex:cvcvcv}
+
+From \Last, the structure of feet in Iraqi Arabic will be familiar as an example of a quantitative stress system which builds moraic trochees from right to left with final consonant extrametricality. Furthermore, \Last also makes it clear that the prosodic word is right-headed in IA. There are numerous ways to account for such systems in the framework of Optimality Theory, but following \cite{sherer94} and \cite{rosenthall99}, I propose the following inventory of constraints for IA:
+
+\ex. \textsc{NonFin(ality)}:\\The head of a Prosodic Word is not final in $\omega$\footnote{As will be demonstrated in \S{\ref{sec:root-pros-appr}}, this constraint must be relativized to particular morphemic input (\cite{pater00}, \emph{et seq.}) as well as different levels of the prosodic hierarchy. However, for the present purposes, staying with the general version of \textsc{NonFin} helps with simplifying exposition. Since the rest of the stress constraints do not interact with the morphological constraints introduced later, it can be assumed that all commentary in this section is intended to be read for the \emph{general} version of \textsc{NonFin}, and not the relativized version introduced below.}
+
+\ex. \textsc{W(eight-to-)S(tress) P(rinciple)}:\\Heavy syllables are stressed.
+
+\ex. \textsc{Align}(F$_{\textrm{hd}}$, R, $\omega$, R) (\textsc{Rightmost)}\\Align the head foot to the right edge of some prosodic word.
+
+\ex. *\textsc{Append}(-to-$\sigma$):\\Coda consonants are not adjoined directly to the syllable node.
+
+\ex. *\textsc{$\mu$/C}:\\Consonants are not moraic.
+
+The constraints *\textsc{Append} and *$\mu$/\textsc{C} together are used to ensure positional variability in the weight of coda consonants, following \cite{sherer94}. The ranking \textsc{*Append} \OTdom {*$\mu$/\textsc{C}} ensures that coda consonants are moraic generally, as shown in \Next (cf. \cite{rosenthall99}'s (34)).\footnote{In here and what follows, I use (parentheses) to denote foot boundaries and [brackets] to denote prosodic word boundaries, where relevant. A subscript mora is used to indicate consonant weight where the moraic status of consonants is crucial.}
+
+\ex. \textsc{*Append} \OTdom *$\mu$/\textsc{C}\\\begin{OTtableau}{2}
+  \OTsolids{1}
+  \OTtoprow*[/d\super{Q}arabna/]{\textsc{*Append},*$\mu$/\textsc{C}}
+  \OTcandrow*[\OThand]{da(\textprimstress rab$_{\mu}$)na}{ ,*}
+  \OTcandrow*{(\textprimstress d\super{Q}arab)na}{*!, }
+\end{OTtableau}
+
+As for the placement of the head foot, in odd-parity sequences consisting of all light syllables, stress falls on the first syllable, in violation of \textsc{Rightmost}. This means that \textsc{NonFinality} must dominate \textsc{Rightmost}, as \Next shows (cf. \cite{rosenthall99}'s (35)):
+
+\ex. \textsc{NonFin} \OTdom \textsc{Rightmost}\\
+\begin{OTtableau}{2}
+  \OTsolids{1}
+  \OTtoprow*[/Sarika/]{\textsc{NonFin},\textsc{Rightmost}}
+  \OTcandrow*[\OThand]{(\textprimstress Sari)ka}{ ,*}
+  \OTcandrow*{Sa(\textprimstress rika)}{*!, }
+\end{OTtableau}
+
+Furthermore, \textsc{WSP}, the constraint which demands that heavy syllables be stressed must dominate \textsc{NonFin}, as \Next shows:
+
+
+\ex. \textsc{WSP} \OTdom \textsc{NonFin}\\\begin{OTtableau}{3}
+  \OTsolids{1,2}
+  \OTtoprow*[/Qalee/]{\textsc{WSP},\textsc{NonFin},\textsc{Rightmost}}
+  \OTcandrow*[\OThand]{Qa(\textprimstress lee)}{ ,*, }
+  \OTcandrow*{(\textprimstress Qa)(lee)}{*!, ,*}
+\end{OTtableau}
+
+Turning now to words containing more than one CVC sequence such as {\em \textipa{\textprimstress Pahlan}}, ``hello,'' the existence of penultimate stress shows that Iraqi Arabic allows for parses which treat word-final consonants as nonmoraic, in violation of *\textsc{Append}. Tableau \Next shows that this can be accommodated by ranking \textsc{NonFin} \OTdom {*\textsc{Append}} (cf. \cite{rosenthall99}'s (36). This is the core of the ``weight-by-position-by-position'' argument advanced in that work):\footnote{I correct in this tableau two errors in the printed version of \cite{rosenthall99}. Specifically, candidates (b) and (c) in \cite{rosenthall99}'s (36) do not have \textsc{WSP} violations. These violations are required, however, by the interpretation of \textsc{WSP} used in \Last. These changes do not change the empirical predictions in that work.}
+
+\ex. \textsc{NonFin} \OTdom {*\textsc{Append}}\\\begin{OTtableau}{4}
+  \OTsolids{1,2,3}
+  \OTtoprow*[/Pahlan/]{\textsc{WSP},\textsc{NonFin},\textsc{*Append},\textsc{*$\mu$/C}}
+  \OTcandrow*[\OThand]{(\textprimstress Pah$_{\mu}$)lan}{ , ,*,*}
+  \OTcandrow*{(\textprimstress Pah$_{\mu}$)(lan$_{\mu}$)}{*!,*, ,**}
+  \OTcandrow*{(Pah$_{\mu}$)(\textprimstress lan$_{\mu}$)}{*!,*, ,**}
+  \OTcandrow*{(\textprimstress Pahlan)}{ ,*!,**, }
+  \OTcandrow*{(\textprimstress Pah$_{\mu}$)lan$_{\mu}$}{*!, , ,**}
+\end{OTtableau}
+
+The ranking \textsc{NonFin} \OTdom \textsc{*Append} ensures that word-final consonants will be parsed as nonmoraic when the high-ranking constraint \textsc{NonFin} compels such a parse. Since this nonmoraic parsing of coda consonants can only occur to satisfy \textsc{NonFin}, coda consonants are guaranteed moraic in all other positions in the language. Thus we have the final ranking for stress in IA as in \Next:
+
+\ex. Rankings for Stress in IA:
+\a. \textsc{WSP} \OTdom \textsc{NonFin} \OTdom \textsc{*Append} \OTdom $^*\mu$/\textsc{C}
+\b. \textsc{NonFin} \OTdom \textsc{Rightmost}
+
+This section has analyzed the word-stress system of Iraqi Arabic, an empirical first for the literature. Additionally, it has motivated the use of \textsc{NonFinality}, a constraint which \S{\ref{sec:root-pros-appr}} will show is integral in word formation in IA. The next section turns to motivating the second of the prosodic constraints important for IA word-formation. This constraint is argued to be \textsc{F(oot)Bin(arity)}, a constraint which demands that feet (and therefore minimal prosodic words) be binary at the level of the mora.
+
+
+\subsection{The Prosodic Word in Iraqi}
+\label{sec:prosodic-word-iraqi}
+
+Turning to the higher prosodic level which defines the prosodic word, one can see similar constraints active on prosodic form and size as are active at the level of the foot. This section provides evidence for two constraints: one enforcing a minimality requirement and one enforcing a maximality requirement.
+
+Let us begin with the former. The picture which emerges from examining several pieces of data is that the minimal prosodic word in IA consists of one quantitative trochee. Informally, this is as in \Next:
+
+\ex. \label{ex:minimal-word}$\omega_{\textrm{min}} = [\mu\mu]_{\omega}$
+
+Three arguments support this conclusion, the first of which comes from the behavior of bilteral roots in surface forms in Iraqi. As with other Arabic dialects and Modern Standard Arabic \citep{ryding05}, IA instantiates a class of roots which only have two consonants as members. Given that final consonants are nonmoraic (as shown in \S{\ref{sec:feet-stress}}), such roots lend themselves to the possibility of surfacing as a degenerate foot, (CV)C. Such forms are unattested in the language at large, however. In the case of biliteral roots, this is avoided on the surface by gemination of the final consonant (cf., \cite{mccarthy79} and the analysis of such roots as spreading of their second consonantal member). This is exemplified in \Next:
+
+\ex. \label{ex:biliteral-gemination} Gemination of Biliteral Root-Formed Words \citep[p.174]{erwin04}:
+\a. /\textipa{Pab}/, ``father'' $\rightarrow$ (\textipa{Pabb}) (*\textipa{Pab})
+\b. /\textipa{Pum}/, ``mother'' $\rightarrow$ (\textipa{Pumm}) (*\textipa{Pum})
+
+As one can see, roots such as $\sqrt{\textrm{\textipa{Pb}}}$ never surface as (CV)C, but rather always as (CVC)C, and always by gemination of the final radical. Additionally, if such words are augmented by suffixes which contain vowels, this gemination does not surface, as in the possessive of \Last[a], {\em \textipa{Pabuuii}}, ``my father.'' If the minimal prosodic word is indeed as in \ref{ex:minimal-word}, then this behavior is not only expected, but predicted.
+
+Along a similar vein one can adduce a second argument for \ref{ex:minimal-word} by examining the behavior of prepositions in IA which are of the prosodic form CVC. As with biliteral roots, such prepositions threaten to surface as a degenerate foot, something the discussion and analysis in \S{\ref{sec:feet-stress}} and \ref{ex:minimal-word} expressly forbid. In order to escape such a fate, these prepositions consistently surface in one of two ways: (1) as a CVC clitic, prosodically dependent upon a host which is not subminimal with respect to \ref{ex:minimal-word}, or (2) as a CVCC functional element capable of standing on its own. This CVCC structure is, moreover, always achieved by geminating the final consonant, as shown in \Next:
+
+\ex. \label{ex:CVC-prep-contrast} CVC Words and Their Surface Forms in IA \citep[p.281]{erwin04}:
+\a. /\textipa{mIn}/, ``from, of'' $\rightarrow$ (\textipa{mInn})/(\textipa{mIn-}) (*\textipa{mIn})
+\b. /\textipa{kul}/, ``all, all of'' $\rightarrow$ (\textipa{kull})/(\textipa{kul-}) (*\textipa{kul})
+
+Again, \ref{ex:minimal-word} accounts for this contrast nicely, demanding that elements which intend on being freestanding prosodic words must be minimally bimoraic, as with the CVCC versions of the prepositions {\em \textipa{mIn}} and {\em \textipa{kul}}. If not, then such elements must be prosodically dependent. Additionally, if one considers these facts in concert with the stress analysis laid out in the previous section, then the following generalization results: while word-final consonants are typically weightless in IA, one can ``hear the mora'' which would normally be attributed to these consonants when word-minimality considerations dictate.
+
+Such contrasts between clitic and freestanding prosodic word are not confined solely to this domain, however. Turning to the class of negative particles with the prosodic structure CV, one finds identical facts, comprising the third and final argument for \ref{ex:minimal-word}. Whereas CVV is a perfectly legitimate prosodic word (since only consonants are extrametrical in IA), CV is not, and something must be done to augment such inputs or they will necessarily fall into clitic-hood. \Next shows that this prediction of \ref{ex:minimal-word} is indeed borne out:
+
+\ex. \label{ex:CVV-part-contrast}CV(V) Alternations in Negative Particles in IA \citep[329--32]{erwin04}:
+\a. /\textipa{ma}/, ``not (verb)'' $\rightarrow$ (\textipa{maa})/(\textipa{ma-}) (*\textipa{ma})
+\b. /\textipa{la}/, ``not/no'' $\rightarrow$ (\textipa{laa})/(\textipa{la-}) (*\textipa{la})
+
+Again, this contrast is neatly understood in the context of positing a single quantitative trochee as the minimal word in IA. Moreover, the facts discussed in \ref{ex:biliteral-gemination}-\ref{ex:CVV-part-contrast} are consistent with cross-dialectical work on the prosody of Arabic, as discussed in \cite{mccarthy90} and \cite[p.88--90]{watson02}. Specifically, \cite{watson02} notes that in the San'ani and Cairene dialects of Arabic, facts identical to \ref{ex:biliteral-gemination}-\ref{ex:CVV-part-contrast} hold, though the degenerate-foot versions of such words can also exist as freestanding prosodic words. However, in such cases, Watson notes that these subminimal prosodic words \emph{bear no main word stress}. From these facts, Watson concludes that a minimal prosodic word constraint defined as \ref{ex:minimal-word} is active in these dialects, as well.
+
+Turning to the issue of maximality, one can also prove that binarity is involved, but this time at the level of the syllable. Specifically, \Next states informally that the maximal prosodic word in Arabic is bisyllabic:
+
+\ex. \label{ex:maximal-word}$\omega_{\textrm{max}} = [\sigma\sigma]_{\omega}$
+
+The activity of \Last can be seen in two places in IA, the first of which is the distribution of uninflected forms along the metric of syllable count. Thus, following the methodology in \cite{mccarthy90} for MSA nominals, one can examine the IA lexicon and find words which range from two to four morae in length, but never a word which is greater than two syllables in length:\footnote{This claim must be qualified, since such words do exist in IA, such as {\em \textipa{madrasa}}, ``school'' or {\em \textipa{stalamna}}, ``we received.'' Such forms either: (i) are word-derived by the criteria in \cite{arad05}, such as the deverbal noun {\em \textipa{madrasa}} or (ii) bear inflectional morphology. Future research will be needed for (ii), at least, and see the Fixed-Prosodic literature \citep{ussishkin00,ussishkin05} for explanations of (i).}
+
+\ex. Range of Morae/Syllable Distribution in IA \citep[40--1]{erwin04}
+\a. $\mu\mu$: {\em \textipa{nisa}}, ``he forgot''
+\b. $\mu\mu\mu$: {\em \textipa{naadi}}, ``club''
+\c. $\mu\mu\mu\mu$: {\em \textipa{taQbaan}}, ``tired''
+
+Thus, one simply never finds uninflected root-derived prosodic words in IA of the form *[$\sigma\sigma\sigma$]$_\omega$, a strong argument for the existence of \ref{ex:maximal-word} in the grammar of IA.
+
+Another argument for such a constraint comes from the observed ``truncation'' which occurs with forms IV, {\em \textipa{PafQal}} and X, {\em \textipa{stafQal}}.\footnote{This phenomenon is termed ``truncation'' because, as \S{\ref{sec:root-pros-appr}} argues, it is not actually truncation but rather an alternative linearization of the first affixal vowel. This distinction matters not for the point here concerning maximal prosodic words, and thus I follow \cite[ch.6]{ussishkin00} in calling such facts ``truncation'' for the sake of discussion.} If one were to blindly concatenate the affixes in \cite[ch.6]{ussishkin00}, one would expect the ungrammatical forms instead of the actual forms in \Next:
+
+
+\ex. Form IV:
+\a. Expected: *\textipa{Pa}CVCVC; Actual: \textipa{Pa}CCVC
+\b. Example: \textipa{PaQlan}, ``to announce'' (*\textipa{PaQalan}, \cite[p.67]{erwin04})
+
+\ex. Form X:
+\a. Expected: *\textipa{sta}CVCVC; Actual: \textipa{sta}CCVC
+\b. Example: \textipa{staPnaf}, ``to appeal (a case)'' (*\textipa{staPanaf}, \cite[p.76]{erwin04})
+
+Since the forms which would violate \ref{ex:maximal-word} are \emph{not} attested, one can safely assume the activity of such a constraint in IA. Assuming this is also in accord with previous work on the nominal system of MSA done in \cite{mccarthy90}. In a careful study of the distribution of prosodic form across the MSA nominal system, \cite{mccarthy90} find that no root-derived noun exists in the singular which violates \ref{ex:maximal-word}.
+
+With the constraints \ref{ex:minimal-word} and \ref{ex:maximal-word} firmly established for IA, the question immediately arises as to how to express such restrictions in an Optimality-Theoretic grammar. Taking first the issue of minimality, the constraint in \Next accounts for such facts, assuming that the smallest foot in a language also forms the minimal prosodic word:
+
+\ex. \textsc{F(oo)tBin(arity)}:\\Feet are binary at the level of the mora.\footnote{\cite[pp.217--9]{ussishkin00} separates this constraint into two constituent parts, one enforcing foot minimality and the other enforcing foot maximality. I have no empirical or theoretical considerations for not following this move, but rather only expository ones. This constraint plays a different role in the RP approach than it does in the FP approach, and the difference in role mitigates against the need for decomposing this constraint. Thus, it should be inconsequential to the RP approach whether or not \textsc{FtBin} is a unitary or composite constraint, and for simplicity I leave it as a single constraint.}
+
+Because each prosodic word must contain at least one foot, \textsc{FtBin} necessarily ensures that such prosodic words will be minimally quantitative trochees, exactly as \ref{ex:minimal-word} mandates.
+
+As far as the issue of maximality is concerned, the empirical conclusions reached in the previous section accord with much literature concerning the bisyllabic maximality of stems (for a direct application to Semitic morphophonology, see \cite{ussishkin05}). In order to capture this generalization, one can, as \cite[p. 188]{ussishkin05} does, extend the framework of Hierarchical Alignment \citep{ito96}. This framework uses the \textsc{Align} family of constraints to relate prosodic categories to one another, and as \cite{ito96,ussishkin00,ussishkin05} discuss, these constraints can be used to derive size effects. What is relevant for the present context is the constraint $\sigma$-\textsc{Align}, given in \Next:
+
+\ex. \textsc{Syllable-PrWdAlignment} ($\sigma$-\textsc{Align}, \cite[p. 188]{ussishkin05}):\\$\forall \textrm{F} \exists \omega [\omega \supset \textrm{F} \wedge \textsc{Align}(\textrm{F}, \omega)]$,\\($\equiv$ Every syllable must be aligned to the edge of some prosodic word containing it.)
+
+In actual analysis, this constraint will penalize any output which containts a syllable not at one edge or the other of a prosodic word, effectively limiting prosodic words to two syllables unless some higher-ranked constraint mediates against this effect. Since this work is concerned only with stems in IA, such a situation will never arise, and stems are limited to two syllables, capturing the maximality effect examined in this section.\footnote{Additionally, if one ranks $\sigma$-\textsc{Align} \OTdom \textsc{M-Parse} \citep{prince04}, this will ensure that no output surfaces (for stems) which violates maximality. This ranking then prevents the creation of stems which have more than four consonants, since any root of five (or more) consonants would require a third syllable to create a well-formed output. This, in turn, can be used to capture the observation that no five-consonant roots exist in native IA words \citep{erwin04}.} Since this maximality effect is respected by all the verbal forms discussed below, $\sigma$-\textsc{Align} will not be shown in subsequent tableaux, but it must be understood to be acive in IA.
+
+With a clear picture of the foot and word-level prosody in IA in hand, it is now possible to turn to outlining the RP approach, which draws heavily upon the constraints proposed in this section.
+
+\section{The Root-and-Prosody Approach}
+\label{sec:root-pros-appr}
+
+This section proposes, under the weight of evidence given above, an approach to the morphology and prosody of root-derived words in NTM languages, called the \textsc{Root-and-Prosody} (RP) approach. This approach is couched within the tenets of Generalized Template Theory \citep{mccarthy95}, and makes two substantial theoretical claims:
+
+\ex. Central Claims of the RP Approach:
+\a. \textsc{Roots and Vowels are Morphemes}: the input to NTM forms consists of the consonantal root and a ``discontinuous'' vowel affix (e.g., /\textipa{a}/ for perfective aspect).
+\b. \textsc{Templates are Given by Prosody}: Templates are emergent properties of words in NTM languages which surface from the necessary satisfaction of high-ranking prosodic markedness constraints (an extreme version of ``templates are made up of the authentic units of prosody'' \citep{mccarthy86}).
+
+The Root-and-Prosody approach borrows heavily from the Generalized Template Theory (GTT; \cite{mccarthy95}, \emph{et seq.}) the claim that templatic effects in natural language are not the result of lexical specification of templatic morphemes. Instead, this literature argues that templatic patterns in word formation result from the satisfaction of high-ranking markedness constraints on prosodic output form. Thus, where \cite{mccarthy81} gives templatic effects in Arabic as the result of melodic association to a morphemic CV-tier, GTT would hold that these templates are the result of satisfaction of high-ranking constraints on prosodic-word level structure. This is exactly the connection made in the Fixed Prosodic literature on NTM languages \citep{ussishkin00,buckley03,ussishkin05}, where it is argued that templatic form is represented in Semitic in exactly this way. Thus, the RP approach shares with these works assumption \Last[b].
+
+What is different about the RP approach is assumption \Last[a]. In the RP approach, the input to any particular derived verb in an NTM language consists of the consonantal root, a set of vocalic affixes, and any prefixal or suffixal material. Positing a root \emph{qua} morpheme not only allows for derivation of root-specific morphological processes (see \S{\ref{sec:voic-emph-assim}}, above and \S{\ref{sec:forms-vii-viii-x}}, below), but also accounts for the other evidence for the root discussed in \S{\ref{sec:motivating-root}}.
+
+Assuming the theoretical backdrop of GTT also allows the RP approach to relate \Last[a] and \Last[b] to output forms. Another way of stating the aims of GTT is to say that where faithfulness constraints do not dictate otherwise, default word-level prosodic form will result. The RP approach extends this notion to argue that root/affixal material is \emph{discontinuous} in the output because of the low-ranking of the faithfulness constraint \textsc{Contiguity}:\footnote{The original formulation of this constraint in \cite{mccarthy95} divides \textsc{Contiguity} into two constraints \textsc{I-Contiguity} (``no skipping'') and \textsc{O-Contiguity} (``no intrusion''). Since the distinction between these two kinds of discontinuities are irrelevant for our purposes, I conflate them into one constraint here. Nothing crucial hinges upon this move.}
+
+\ex. \textsc{Contig(uity)} \citep{mccarthy95}:\\The portion of the input and output strings standing in correspondence forms a continuous string.
+
+Thus, the informal idea of the RP approach is that NTM effects in languages result because there is \emph{no other optimal} way to linearize input root/affixal material under the auspices of high-ranking prosodic constraints. Output forms which insert segments between, for instance, members of the consonantal root, therefore do not incur fatal faithfulness violations (ensured by the low-ranking \textsc{Contiguity} in such languages), and are actually \emph{optimal} from the perspective of highly-valued prosody. In such an approach, templates become an emergent property of NTM languages, residual generalizations in form which arise because the language's prosodic constraints leave no other linearization of affixal and root material available.
+
+In a substantive way, the RP approach can be seen as the ``null hypothesis'' for NTM languages from the point of view of GTT. Specifically, the RP approach requires the existence of only three major classes of constraints, each of which have been shown to be independently needed, even for languages which do not display NTM behavior:
+
+\ex. Constraints in an RP Approach:
+\a. \textsc{Prosodic Constraints}: Constraints on prosody independently needed in the language (\textsc{FtBin}, \textsc{WSP}, \textsc{NonFinality}, etc.).
+\b. \textsc{Morphological Constraints}: Constraints which align morphemes in linear prosodic structure (\textsc{Align-L}(\emph{n}, $\omega$), \textsc{Align-L}(\textipa{-t-}, $\omega$), etc.).
+\c. \textsc{Faithfulness Constraints}: Correspondence-Theoretic faithfulness\\constraints of the usual families (\textsc{Dep-Root}, \textsc{Max}, \textsc{Contiguity}, etc.).
+
+Constraints of the kind in \Last[a] were motivated in \S{\ref{sec:feet-stress}-\ref{sec:prosodic-word-iraqi}}, and thus are needed for any analysis of Arabic, independent of the RP approach. Similar considerations are true for the Alignment constraints in \Last[b]. Since, empirically, such affixal material always occurs toward the left edge of the prosodic word, any approach within GTT to Arabic will necessarily include such constraints, and such constraints are a necessary assumption in any work which uses Generalized Alignment \citep{mccarthy93} to do morpheme placement. Finally, the faithfulness constraints in \Last[c] are the industry standard Correspondence-Theoretic faithfulness constraints \citep{mccarthy95}. Thus, the RP approach does not need to appeal to extra considerations such as the \textsc{OO-Faith} family of constraints \citep{benua00} and is thus desirable for deriving root-derived words from a parsimony point of view.
+
+Since a complete analysis of all the nonconcatenative templatic behavior in even one dialect of Arabic would require (at least) a monograph-sized work, this paper concerns itself in the next section with deriving a small corner of the Iraqi Arabic verbal system, namely the verbal stems. The analysis below worries about capturing the arrangement of affixes and roots in linear/prosodic structure to the absence of inflectional morphology. In order to capture facts concerning inflection, one could pair the discussion below with the Optimal Paradigms analysis argued for in \cite{mccarthy05}, understanding the output of the subsequent sections as the stem-level input to Optimal Paradigms. Such an understanding accounts for the fact that, when inflectional morphology is considered, many verbal forms in IA violate the $\sigma$-\textsc{Align} constraint used to capture stem-maximality in the previous section. Such a full integration of the RP approach with Optimal Paradigms must be, however, the topic of future work for reasons of space.
+
+
+\subsection{Analysis of Root-Derived Verbs in Iraqi}
+\label{sec:analys-root-deriv}
+
+The Iraqi Arabic derivational verbal system consists of an NTM in which a 2-4 consonantal root is nonconcatenatively affixed around one or two vowels according to fixed pattens. Table \ref{tab:23roots} gives the eight patterns which exist in IA for 2 and 3-consonantal roots. Triliteral roots are exemplified, in accordance with Arabic grammatical tradition, using the root $\sqrt{\textrm{\textipa{fQl}}}$ meaning roughly ``doing, action.'' Biliteral roots are exemplified using the root $\sqrt{\textrm{\textipa{mr}}}$, meaning ``passing, crossing.''
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}[ht]{c|cc}
+    &\textbf{Triliteral}&\textbf{Biliteral}\\
+    \hline
+    Root&$\sqrt{\textrm{\textipa{fQl}}}$&$\sqrt{\textrm{\textipa{mr}}}$\\
+    \hline
+    I&\textipa{faQal}&\textipa{marr}\\
+    II&\textipa{faQQal}&\textipa{marrar}\\
+    III&\textipa{faaQal}&\textipa{maarar}\\
+    V&\textipa{tfaQQal}&\textipa{tmarrar}\\
+    VI&\textipa{tfaaQal}&\textipa{tmaarar}\\
+    VII&\textipa{nfaQal}&\textipa{nmarr}\\
+    VIII&\textipa{ftaQal}&\textipa{mtarr}\\
+    X&\textipa{stafQal}&\textipa{stamarr}\\
+    \hline
+  \end{tabular}
+  \caption{Bi- and Triliteral Roots in IA}
+  \label{tab:23roots}
+\end{table}
+
+Several generalizations are apparent in Table \ref{tab:23roots} which are relevant to the RP approach. The first of these is that, regardless of the number of root consonants, the minimal affix which can be identified as perfective aspect and active voice is /a/. One could posit a bivocalic affix /aa/, but there are two problems with such an approach. The first is that this would be a curious input from the perspective of biliteral roots, which do not show two /a/'s in the output, and furthermore show no evidence for deletion of an input vowel. The second reason to doubt such an input is that it would violate the Obligatory Contour Principle. While it is not an \emph{a priori} necessity that inputs should have to respect such an output-oriented constraint, the subsequent sections will show that these forms can be analyzed without having to posit inputs which do violate it. Thus, from the perspective of theoretical parsimony, a bivocalic affix is rejected as the input to forms which show two identical vowels for the output. Given this assumption, the RP approach must treat the second vowel as an instance of \emph{fission} with respect to an input /a/ (see \S{\ref{sec:form-i}}). 
+
+The second generalization apparent in Table \ref{tab:23roots} concerns the appearance and restriction of consonant clusters. One can see that for triliteral roots, complex margins are only present in forms which contain a segmental affix over and above the root and vowel (i.e., forms V, VI, VII, VIII, and X but not I, II, or III). When viewed against the fact that these same forms (VII, VIII, and X) are monosyllabic for biliteral roots, one can extract the following generalization:
+
+\ex. The input vowel /a/ does not fission except when a complex margin would result.
+
+This generalization is captured in \S{\ref{sec:form-i}} with a particular ranking of the prosodic constraint \textsc{NonFinality} and the faithfulness constraint \textsc{Integrity}, which prohibits fission. Finally, one can see that forms II/III and their passive counterparts V/VI show lengthening of input material. This input material is usually analyzed as a mora \citep[ch.6]{ussishkin00}. However, as \S{\ref{sec:forms-ii-iii}} argues, these forms can be analyzed using morpheme-specific markedness constraints along the lines proposed in \cite{pater00,paterToAppear}. Given that the goal of this work is to eliminate templatic inputs/stipulation in the derivation of NTM languages, this morpheme-specific markedness solution is given below instead of the analysis in terms of a floating mora.
+
+In summary, the assumed inputs to the IA derivational verbs are given in \Next:
+
+\ex. Input to Root-Derived Verbs in IA for the RP Approach:
+\a. Form I {\em \textipa{faQal}}: /$\sqrt{\textrm{\textsc{root}}}$/, /a/
+\b. Form II {\em \textipa{faQQal}}: /$\sqrt{\textrm{\textsc{root}}}$/, /a/, $\emptyset_{\textrm{2}}$
+\c. Form III {\em \textipa{faaQal}}: /$\sqrt{\textrm{\textsc{root}}}$/, /a/, $\emptyset_{\textrm{3}}$\footnote{This $\emptyset$ morpheme is discussed below in \S{\ref{sec:forms-ii-iii}}.}
+\d. Form VII {\em \textipa{nfaQal}}: /$\sqrt{\textrm{\textsc{root}}}$/, /a/, /\textipa{n-}/
+\e. Form VIII {\em \textipa{ftaQal}}: /$\sqrt{\textrm{\textsc{root}}}$/, /a/, /\textipa{t-}/
+\f. Form X {\em \textipa{stafQal}}: /$\sqrt{\textrm{\textsc{root}}}$/, /a/, /\textipa{sta-}/
+
+These inputs are well-motivated from the standpoint of the Arabic derivational paradigm, and each of them have independently been proposed in the literature \citep{mccarthy81,mccarthy90,ussishkin00}, with the exception of the $\emptyset$ morphemes in forms II/III, to be discussed below. 
+
+At first glance, these inputs might seem to run afoul of the fundamental claim of Optimality Theory of Richness of the Base \citep{prince04}. The question which immediately arises in the context of the discussion below is what happens to inputs which come fully specified with vowels, such as a candidate {\em \textipa{faQal}} for form I. In fact, the analysis below predicts that such an input, as long as it is not accompanied by further vocalic affixes, will surface faithfully. This is a welcome result from the perspective of morphophonology, since such a word \emph{is} well formed, phonologically. However, this also means that the learner of Arabic needs some other evidence to arrive at positing a consonantal root. That evidence comes from the morphosyntactic alternation of such vocalic material. As \cite{diesing95} note, vowels in Arabic carry the morphosyntactic burden of voice and aspect, meaning that alternations in these vowels across different aspects/voices will force the inclusion of vocalic material in the input. Once this input is considered, the consonantal root must be posited if Lexicon Optimization is to be maintained, as an input with vowels already specified would have a more unfaithful mapping to the surface output than an input with a purely consonantal root. With this understanding of the inputs in the IA verbal system in mind, the next sections turn to outlining the RP analysis in detail.
+
+\subsubsection{Form I: {\em \textipa{faQal}/\textipa{faQQ}}}
+\label{sec:form-i}
+
+Beginning first with the biliteral roots, form I/{\em \textipa{faQQ}} shows doubling of the second consonant (gemination) and no fission of the input vowel. The attested form is more harmonic than output forms which epenthesize an unmarked vowel ({\em \textipa{faQI}}), and those which fission the input vowel ({\em \textipa{faQa}}).\footnote{In what follows, candidates will not be considered which violate \textsc{FtBin}, shown in \S{\ref{sec:prosodic-word-iraqi}} to be the minimal prosodic word in IA. Thus, it is taken for granted that all outputs must augment the input in some way, since CVC is subminimal. Also, not shown in what follows is a crucially dominated \textsc{Ident-$\mu$} constraint, which mitigates \emph{against} moraic augmetation of the input. This constraint must be ranked very low in IA anyway, as the facts in this section, \S{\ref{sec:forms-ii-iii}}, and the facts from broken plurals \citep{mccarthy97} demonstrate.} To capture this fact, the following constraints are proposed:
+
+\ex. \label{ex:nonFin}\textsc{NonFin(ality)}($\sigma$):\\The head syllable of a prosodic word is not final in $\omega$.
+
+\ex. \label{ex:integrity}\textsc{Int(egrity)}: A segment in the output has a single correspondent in the input.\footnote{In this work I do not show or consider candidates which violate \textsc{Uniformity}, the constraint which bans coalescence. For all practical purposes, uses of \textsc{Integrity} in this work can be understood to mean both \textsc{Integrity} and \textsc{Uniformity}.}
+
+\ex. \label{ex:max/dep}\textsc{MD}: A cover constraint for:
+\a. \label{ex:max}\textsc{Max}:\\No deletion.
+\b. \label{ex:dep}\textsc{Dep}:\\No epenthesis.
+
+\ref{ex:nonFin} is the member of the \textsc{NonFinality} family of constraints introduced in \S{\ref{sec:feet-stress}} to account for stress facts in IA. Whereas the constraint in that section focused on the head \emph{foot}, this constraint concerns itself with the position of the head \emph{syllable} with respect to the $\omega$-final edge.\footnote{This distinction will henceforth be noted as \textsc{NonFin}($\sigma$) and \textsc{NonFin}(F).}  The other two constraints are standard members of Correspondence Theory's faithfulness inventory, with \textsc{Max} and \textsc{Dep} conflated since their distinction is not relevant to the present work. Ranking both the faithfulness constraints over \textsc{NonFin}($\sigma$) ensures that these outputs never surface, as \Next shows:
+
+\ex. \textsc{Int}, \textsc{MD} \OTdom \textsc{NonFin}($\sigma$)\\\begin{OTtableau}{3}
+  \OTsolids{2}
+  \OTdashes{1}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{mr}}}$/}, /a/]{\textsc{Int},\textsc{MD},\textsc{NonFin}($\sigma$)}
+  \OTcandrow*[\OThand]{[(marr)]}{ , ,*}
+  \OTcandrow*{[(\textprimstress marI)]}{ ,*!, }
+  \OTcandrow*{[(\textprimstress mara)]}{*!, , }
+\end{OTtableau}
+
+Another possible candidate which must be ruled out is {\em \textipa{amr}}, the candidate which attempts to satisfy the constraint \textsc{Contiguity}, which prevents intrusion in the output. This constraint must be dominated by \Next, which rules out complex margins. This is in line with the generalization in the preceding section that complex margins in IA are only tolerated at the cost of linearizing \emph{other} affixal material, which is not present in form I. The relevant ranking argument is in \NNext:
+
+\ex. \label{ex:complex}\textsc{*Comp(lex)}: A cover constraint for:
+\a. \label{ex:complex-ons}\textsc{*Complex}$^{ons}$:\\No complex onsets.
+\b. \label{ex:complex-cod}\textsc{*Complex}$^{cod}$:\\No complex codas.
+
+
+\ex. \textsc{*Comp} \OTdom \textsc{Contig}\\\begin{OTtableau}{2}
+  \OTsolids{1}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{mr}}}$/}, /a/]{\textsc{*Comp},\textsc{Contig}}
+  \OTcandrow*[\OThand]{[(marr)]}{ ,*}
+  \OTcandrow*{[(amr)]}{*!, }
+\end{OTtableau}
+
+Finally, of the candidates which satisfy \textsc{Max/Dep}, \textsc{Integrity}, and \textsc{*Complex}, several are viable. However, including a constraint which punishes metathesis of input material \Next and the constraints on consonant moraicity as given in \S{\ref{sec:feet-stress}} are enough to rule out these candidates. These constraints need not be ranked with respect to the undominated constraints in the two previous tableaux, as \NNext shows, where the jagged line is meant to be interpreted as ``is not crucially ranked.''
+
+\ex. \label{ex:linearity}\textsc{Lin(earity)}:\\No metathesis.
+
+\pagebreak
+
+\ex. No Ranking Needed:\\\begin{OTtableau}{7}
+  \OTdashes{1,2}
+  \OTjagged{6}
+  \OTsolids{3,4,5}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{mr}}}$/}, /a/]{\textsc{*Comp},\textsc{Int},\textsc{MD},\textsc{NonFin}(F),\textsc{*Append},\textsc{*$\mu$/C},\textsc{Lin}}
+  \OTcandrow*[\OThand]{[(marr)]}{ , , ,*, ,*, }
+  \OTcandrow*{[(maar)]}{ , , ,*,*!, , }
+  \OTcandrow*{[(ramm)]}{ , , ,*, ,*,*!}
+\end{OTtableau}
+
+In this tableau, candidate (a) wins because it is the most harmonic. Among its interesting competitors, (b), or a candidate which attempts to lengthen the vowel instead, does worse on the constraint *\textsc{Append}, since coda consonants must be moraic where possible. Notice that normally coda consonants are \emph{not} moraic in this position in the language at large, as \S{\ref{sec:feet-stress}} showed that \textsc{NonFin} \OTdom \textsc{*Append}. However, with the addition of the new constraints in Tableau \Last, the only ways in which a candidate can avoid violating \textsc{NonFin} is to violate some other, more highly ranked constraint, and thus moraic consonants are tolerated word-finally because of the inconsequence of \textsc{NonFin}. Finally, even though (c) respects *\textsc{Append}, it metathesizes the input root material, to the consternation of \textsc{Linearity}.
+
+We thus see in the analysis of form I with biliteral roots that all serious competitors must satisfy \textsc{MD} and \textsc{Lin}. Since these constraints are universally satisfied, they will not be shown unless candidates which violate them are informative over and above the generalizations established for biliteral roots here.
+
+Turning now to triliteral roots, one can see that the attested output form, {\em \textipa{faQal}} shows fission with respect to the input vowel /a/. Normally, however, since \textsc{Integrity} \OTdom \textsc{NonFin}($\sigma$), pressures against being monosyllabic are \emph{not enough} to force fission of the input vowel. What is different about triliteral roots is that any candidate which \emph{does not} fission the input vowel will incur a *\textsc{Complex} violation. Thus, as Tableau \NNext shows, ranking \textsc{*Complex} \OTdom \textsc{Int} ensures the correct output.
+
+\ex. \textsc{*Comp} \OTdom \textsc{Int}\\\begin{OTtableau}{4}
+\OTsolids{1,2}
+\OTdashes{3}
+\OTtoprow*[\*{/$\sqrt{\textrm{\textipa{fQl}}}$/}, /a/]{\textsc{*Comp},\textsc{Int},\textsc{NonFin}($\sigma$),\textsc{Contig}}
+ \OTcandrow*[\OThand]{[(\textprimstress faQal)]}{ ,*, ,**}
+\OTcandrow*{[(faQl)]}{*!, ,*,*}
+\OTcandrow*{[(fQal)]}{*!, ,*,*}
+\end{OTtableau}
+
+Thus, while \textsc{Integrity} is highly respected in biliterals, where complex margins are not an issue, the triliteral cases show that it is in fact *\textsc{Complex} which is most highly valued in these forms. However, two troubling candidates remain unaccounted for. These candidates are {\em \textipa{\textprimstress afQal}}  and {\em \textipa{\textprimstress faQla}}. These candidates both fission the input vowel, but do it in a way which respects \textsc{Contig} more than the attested output, {\em \textipa{faQal}}. The reason for the ungrammaticality of these candidates, I argue, is that they do not \emph{align the root material} with the edge of the prosodic word. This can be formalized by the constraint in \Next, and ranking it above \textsc{Contig} and \textsc{NonFin}($\sigma$) ensures that they do not surface:
+
+\pagebreak
+
+\ex.\label{ex:align-root}\textsc{Align-R(oo)t}: A cover constraint for:
+\a. \label{ex:align-rootR}\textsc{Align-R}(root, $\omega$):\\The right edge of every root is aligned to the right edge of some prosodic word.
+\b. \label{ex:align-rootL}\textsc{Align-L}(root, $\omega$):\\The left edge of every root is aligned to the left edge of some prosodic word.
+
+
+\ex. \textsc{Align-Rt} \OTdom \textsc{NonFin}($\sigma$), \textsc{Contig}\\\begin{OTtableau}{2}
+  \OTsolids{1}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{fQl}}}$/}, /a/]{\textsc{Align-Rt},\textsc{Contig}}
+  \OTcandrow*[\OThand]{[(\textprimstress faQal)]}{ ,**}
+  \OTcandrow*{[(\textprimstress af)Qal]}{*!,*}
+  \OTcandrow*{[(\textprimstress faQ)la]}{*!,*}
+\end{OTtableau}
+
+Thus the RP approach produces the correct output for form I verbs, both with two and three-consonant roots, by ensuring that \emph{no other linearization of input material} is possible given the constraints at play, most of which are prosodic, in line with GTT. This result, furthermore, was reached without using any constraints not standardly assumed in the literature on Optimality Theory and GTT. The magic of NTM, therefore, is in constraint interaction -- nothing else. The final ranking arguments arrived at in this section are summarized in \Next:
+
+
+\ex. Morphological Rankings for IA Thus Far:
+\a. \textsc{*Comp} \OTdom \textsc{Int} \OTdom \textsc{NonFin}($\sigma$)
+\b. \textsc{Max}, \textsc{Dep}  \OTdom \textsc{NonFin}($\sigma$)
+\c. \textsc{*Comp} \OTdom \textsc{Contig}
+\d. \textsc{Align-Rt} \OTdom \textsc{Contig}
+
+\subsubsection{Forms II, III: The Moraic Forms}
+\label{sec:forms-ii-iii}
+
+Turning now to forms II ({\em \textipa{faQQal}}) and III ({\em \textipa{faaQal}}), there are two problems for the analysis presented thus far. The first of these problems is one common to any analysis of Arabic (see, e.g., \cite{moore90}, \cite[ch.6]{ussishkin00} for discussion). The problem is how an analysis which treats form II and III as differing from I only in the inclusion of an additional morpheme can successfully ensure that inputs to form II verbs do not surface as form III verbs, and vice-versa.
+
+\cite{moore90} solves this problem with recourse to the idea of a \emph{nuclear} mora. In \cite{moore90}'s analysis, form II and III differ as to the presence of a nuclear mora, which may only link to vowel slots in the representation. Thus form II does not have a nuclear mora, and form III does. This analysis cannot be easily ported into the RP approach, not only because such autosegmental associations do not occur, but also because the RP approach attempts to do away with templatic information. The assumption of a floating mora in the input, consistent with the analysis of these patterns in \cite{moore90} \cite[ch.6]{ussishkin00} and others approximates such templatic information, and thus should be dispreferred under the assumptions of the RP approach. The solution this work will adopt instead is that these forms are differentiated by different input zero-allomorphs, $\emptyset_2$ and $\emptyset_3$. While such covert morphology is to be avoided wherever possible, its inclusion allows for removal of prosodic material in the input -- a welcome conclusion.
+
+
+The other problem is more serious and specific to the RP approach, however. One can see that the alternation in syllabicity which obtains in the form I/{\em \textipa{faQal}} pattern does not hold in forms II/III. In these forms, both biliteral and triliteral roots surface with the templatic shape CVCCVC (or CVVCVC). This is problematic on the account given in the previous section, since it was shown there that \textsc{NonFin}(F) must be dominated by \textsc{Integrity}. This is to force the lack of fission of the input vowel in biliteral {\em \textipa{marr}} verbs, as the tableau in \Next shows:
+
+\ex. Preventing Bisyllabicity in Form I Biliterals:\\\begin{OTtableau}{2}
+  \OTsolids{1}
+  \OTtoprow*[\*{$\sqrt{\textrm{\textipa{mr}}}$}, /a/]{\textsc{Int}, \textsc{NonFin}(F)}
+  \OTcandrow*[\OThand]{[(marr)]}{ ,*}
+  \OTcandrow*{[(marar)]}{*!, }
+\end{OTtableau}
+
+If this ranking is correct (as \S{\ref{sec:form-i}} argues it is), \Next shows that this ranking predicts the wrong output for form II, as \Next shows:
+
+\ex. Incorrect Output for Biliteral Roots in Form II:\\\begin{OTtableau}{3}
+  \OTsolids{2}
+  \OTdashes{1}
+  \OTtoprow*[\*{$\sqrt{\textrm{\textipa{mr}}}$}, /a/, /$\emptyset_2$/]{\textsc{Int},\textsc{Max}, \textsc{NonFin}(F)}
+  \OTcandrow*[\OThand]{(mar)rar}{*!, , }
+  \OTcandrow*[\OTface*]{(marr)}{ , ,*}
+  \OTcandrow*{(mar)}{ ,*!,*}
+\end{OTtableau}
+
+One can see that since no threatening *\textsc{Complex} violation exists to compel further violation of \textsc{Integrity}, monosyllabic output is expected for biliteral roots. One can even go further to say that the only constraint which favors the attested output {\em \textipa{marrar}} over {\em \textipa{marr}} is \textsc{NonFin}(F). From this it follows that \textsc{NonFin}(F) \OTdom \textsc{Int}, and a ranking contradiction results.
+
+I would like to argue that a suitable solution exists to both these problems, and that is to treat forms II and III as idiosyncratic exceptions to the otherwise default unmarked templatic form. In treating these forms as idiosyncratic exceptions, a solution becomes available within the class of approaches which admit the existence of markedness constraints relativized to particular morphemes \citep{pater00,flack07,paterToAppear}. As discussed in \cite{paterToAppear}, morpheme-specific markedness constraints are a possible solution to such morpeheme-specific idiosyncracies and can be understood to arise only when Recursive Constraint Demotion \citep{tesar00} fails to achieve a satisfactory ranking.\footnote{See also \cite{becker09} for discussion of limiting the application of ``constraint cloning'' to instances where Recursive Constraint Demotion fails to converge. While it is not the purpose of this work to evaluate the idea of constraint cloning, it does make sense to want to limit its application to only those contexts where no other solution presents itself to the language-learner.} This is precisely the situation we are in with the ranking contradiction between \textsc{NonFin}(F) and \textsc{Integrity}. The morpeheme-specific markedness constraint option, then, appears to be a reasonable formalization of a solution to this problem.\footnote{One problem that has been noted with this framework is that it predicts the existence of the putatively unattested cases of templatic backcopying in reduplication contexts. While a proper discussion of reduplication would take this work too far afield, let me make two comments here. First, it is not entirely clear that templatic backcopying does not exist, as convincingly argued by \cite{gouskova07}. Second, even if backcopying does not exist, this will not be a problem in the otherwise templatic language of Arabic, as there is very limited reduplication in Iraqi Arabic \citep{erwin04}. Nevertheless, the tenability of the \cite{paterToAppear} approach to idiosyncrasy with respect to templatic backcopying must remain a question for future research.}
+
+The solution to this problem in the \cite{paterToAppear} approach is to define two different lexical classes corresponding to forms II and III. This has already partially been done with respect to the inputs with the indexing of $\emptyset$ for particular patterns in Arabic. All that remains is to define a set of lexically-indexed markedness constraints with make reference to these two inputs. The following two will suffice:
+
+\ex. \textsc{NonFin}(F)$_{2,3}$: The head foot of an output containing a realization of a morpheme marked 2 or 3 is not final in $\omega$.
+
+\ex. \textsc{NoLongV(owel)}$_{2}$: Outputs containing a realization of a morpheme marked 2 do not contain long vowels.\footnote{There is a symmetric solution to this problem which involves marking the constraint *$\mu$/\textsc{C}$_3$ and not marking \textsc{NoLongV}. The choice between these two has no consequence, and so I assume the \textsc{NoLongV} version here.}
+
+Since the informal idea in these forms is that the need for nonfinal stress outweighs the need to have monosyllabicity, it is clear that the class-specific prosodic markedness constraint \textsc{NonFin}(F)$_{2,3}$ must outrank \textsc{Dep}$-\mu$, the faithfulness constraint which penalizes moraic augmentation. This is not shown in tableaux which follow, as the general strategy of deriving templatic effects with no prosodic material in the input means that such constraints must be ranked quite low in NTM languages. Thus, the ranking \textsc{NonFin}(F)$_{2,3}$ \OTdom \textsc{*$\mu$/C}, \textsc{Int} is sufficient to ensure bisyllabicity in biliteral roots, as \Next shows:\footnote{Note that these tableaux which follow do not consider candidates such as {\em \textipa{mara}}, where the root does not fission to fill a word-final consonant position, since these candidates will be sub-optimal from the perspective of \textsc{Align-Rt}, shown in the previous section to be undominated in IA.}
+
+\ex. \textsc{NonFin}(F)$_{2,3}$ \OTdom \textsc{*$\mu$/C}, \textsc{Int}:\\\begin{OTtableau}{4}
+  \OTsolids{1}
+  \OTdashes{2, 3}
+  \OTtoprow*[\*{$\sqrt{\textrm{\textipa{mr}}}$}, /a/, /$\emptyset_2$/]{\textsc{NonFin}(F)$_{2,3}$,\textsc{*$\mu$/C},\textsc{Int},\textsc{Dep}-$\mu$}
+  \OTcandrow*[\OThand]{[(mar)rar]}{ ,*,*,*}
+  \OTcandrow*{[(maar)]}{*!, , ,*}
+\end{OTtableau}
+
+Thus the candidate (b), which attempts to avoid both fissioning the input vowel /a/ and having a moraic consonant, loses since this necessarily incurs a violation of \textsc{NonFin}$_{2,3}$. One can also see that \textsc{NoLongV}$_2$ must dominate \textsc{*$\mu$/C}, as \Next shows, preventing the derivation of form III in form II verbs:
+
+\pagebreak
+
+\ex. \textsc{NoLongV}$_2$ \OTdom \textsc{*$\mu$/C}:\\\begin{OTtableau}{2}
+  \OTsolids{1}
+  \OTtoprow*[\*{$\sqrt{\textrm{\textipa{mr}}}$}, /a/, /$\emptyset_2$/]{\textsc{NoLongV}$_2$,\textsc{*$\mu$/C}}
+  \OTcandrow*[\OThand]{[(mar)rar]}{ ,*}
+  \OTcandrow*{[(maa)rar]}{*!, }
+\end{OTtableau}
+
+Thus candidate (b), the form III parse, loses because of the activity of \textsc{NoLongV}$_2$. In this way, both the problems outlined above for the RP approach in form II/III verbs are solved by the inclusion of morpheme specific markedness constraints, thus providing an argument for their inclusion. Turning to triliteral verbs, the ranking just established carries over unaltered, as \Next shows:
+
+\ex. Form II verbs with triliteral roots:\\\begin{OTtableau}{3}
+  \OTsolids{2}
+  \OTdashes{1}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{fQl}}}$/}, /a/, $\emptyset_2$]{\textsc{NonFin}(F),\textsc{NoLongV}$_2$,\textsc{*$\mu$/C}}
+  \OTcandrow*[\OThand]{[(faQ)Qal]}{ , ,*}
+  \OTcandrow*{[(faa)Qal]}{ ,*!, }
+\end{OTtableau}
+
+Turning now to form III verbs with biliteral roots, the tableau in \Next shows that the ranking already established predicts the correct output, provided that \textsc{*$\mu$/C} \OTdom \textsc{NoLongV}, the general version of the constraint banning long vowels:\footnote{For simplicity, I no longer consider candidates which attempt to satisfy \textsc{Integrity}, since they will be suboptimal because of the activity of \textsc{NonFin}(F)$_{2,3}$, as demonstrated above.}
+
+\ex. Form III verbs with biliteral roots:\\\begin{OTtableau}{3}
+  \OTsolids{1,2}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{mr}}}$/}, /a/, $\emptyset_3$]{\textsc{NonFin}(F)$_{2,3}$,\textsc{*$\mu$/C},\textsc{NoLongV}}
+  \OTcandrow*[\OThand]{[(maa)rar]}{ , ,*}
+  \OTcandrow*{[(mar)rar]}{ ,*!, }
+  \OTcandrow*{[(marar)]}{*!, , }
+\end{OTtableau}
+
+Finally, \Next completes the picture by showing that the analysis also carries over to triliteral roots in form III:
+
+\ex. Form III verbs with triliteral roots:\\\begin{OTtableau}{3}
+  \OTsolids{1,2}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{fQl}}}$/}, /a/, $\emptyset_3$]{\textsc{NonFin}(F)$_{2,3}$,\textsc{*$\mu$/C},\textsc{NoLongV}}
+  \OTcandrow*[\OThand]{[(faa)Qal]}{ , ,*}
+  \OTcandrow*{[(faQ)Qal]}{ ,*!, }
+\end{OTtableau}
+
+We thus have the following rankings in this section:
+
+\pagebreak
+
+\ex. Rankings for Form II/III in IA:
+\a. \textsc{NonFin}(F)$_{2,3}$ \OTdom \textsc{*$\mu$/C}, \textsc{Int}, \textsc{Dep}-$\mu$
+\b. \textsc{NoLongV}$_2$ \OTdom \textsc{*$\mu$/C} \OTdom \textsc{NoLongV}
+
+Additionally, one can see that allowing for morpheme-specific markedness constraints in the grammar provides for an analysis of form II/III in Iraqi Arabic verbs which prevents both the ranking contradiction and output ambiguity problems discussed above. Furthermore, the preceding discussion has showed that \textsc{NonFin} plays an active role in word-formation in Iraqi Arabic, driving prosodic augmentation where possible. 
+
+Before leaving the topic of forms II and III, a final word concerning the analysis and its relation to previous analyses of these forms is worth making. In the works of \cite{mccarthy90,moore90,ussishkin00}, these forms are analyzed as differing from the {\em \textipa{faQal}} form by the addition of a single mora in the input. This analysis does not differ from its predecessors in claiming that it is the notion of length which separates forms II and III from form I, it does differ in the way in which this length difference is cached out theoretically. Specifically, since the goal of the RP approach is to derive \emph{all} templatic information, one could entertain the stronger claim in \Next concerning templatic information in the input:
+
+\ex. Inputs cannot/never contain prosodic material.
+
+While it must be the topic of future research to evaluate the feasibility of a claim as strong as \Last, maintaining it does not require abandoning the notion that what separates the II/III forms from form I is length. Specifically, it was shown in above that syllable-final consonants are required to be moraic because of the activity of \textsc{NonFin}(F)$_{2/3}$ and \textsc{NoLongV}$_2$. Thus the RP approach can maintain this length-contrast-based analysis of forms II and III while eliminating the need for prosodic material in the input, as long as one is prepared to treat prosodic augmentation with indexed markedness constraints. The approach advanced here amounts to claiming that instead of there being a subset of derived verbs which are formed in IA by prosodic augmentation, IA instead possesses two distinct prosodic paradigms into which verbs are classified, with each paradigm possessing its own notion of ``unmarked'' prosodic form. Thus, the RP approach shows that allowing indexed markedness constraints over prosodic form allows for the elimination of prosodic material in the input, a strict interpretation of the aims of Generalized Template Theory.\footnote{A weak prediction of the RP approach using indexed markedness constraints is that a particular NTM language should only be able to select from a subset of logically possible prosodic paradigmatic alternations, with the selection space constrained by the language-wide ranking of other markedness constraints. In the case of IA, one would never expect a template of the form CVCCCVC, given that *\textsc{Complex} is independently shown to be ranked high. An interesting question which must be left for further research is whether or not there is a limit to the amount of prosodic variation one language allows across paradigms, in line with this prediction.}  With this analysis in hand, the next section focuses on those forms which differ from the form I/{\em \textipa{faQal}} pattern by simple affixation.
+
+
+\subsubsection{Forms VII, VIII, X: Pure Prefixing/Infixing}
+\label{sec:forms-vii-viii-x}
+
+Turning now to other verbal forms in Iraqi Arabic, one can identify a class of verbs which differ from form I only in the addition of extra prefixal/suffixal material. These verbs are repeated from above in Table \ref{tab:pure-affix}.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}[ht]{ccc}
+    &\textbf{Triliteral}&\textbf{Biliteral}\\
+    \hline
+    Root&$\sqrt{\textrm{\textipa{fQl}}}$&$\sqrt{\textrm{\textipa{fQ}}}$\\
+    \hline
+    VII&\textipa{nfaQal}&\textipa{nmarr}\\
+    VIII&\textipa{ftaQal}&\textipa{mtarr}\\
+    X&\textipa{stafQal}&\textipa{stamarr}\\
+    \hline
+  \end{tabular}
+  \caption{Pure Prefixing/Infixing Forms in IA}
+  \label{tab:pure-affix}
+\end{table}
+
+In each case, one can easily analyze these forms as a form I base plus some affixal material (though see below for discussion of form X). This can be formally captured by defining constraints of the Generalized Alignment family which position each affix in linear prosodic structure. For ease of exposition, this work assumes that there are two classes of such affixes, and simply defines two placeholder constraints over these groups:\footnote{In this analysis I draw a distinction between the /t/ affix in forms V, VI and the /t/ affix in form VIII. There is evidence for this distinction, but it is cross-dialectal and/or semantic in nature, and has been omitted for space considerations.}
+
+  \begin{enumerate}
+    \item \emph{Prefix}$_1$: /n/, /t/(in forms V and VI), /st/
+    \item \emph{Prefix}$_2$: /t/ (in form VIII)
+  \end{enumerate}
+
+Beginning with the forms which show members of the class of prefix$_1$, the relevant alignment constraint is as in \Next:
+
+\ex. \textsc{Align-L}($prefix_1$, $\omega$) (\textsc{Align-}$pre_1$):\\Align the left edge of affixes belonging to the class \emph{prefix}$_1$ to the left edge of some prosodic word.
+
+The relevant ranking for this constraint is given in the tableau in \Next:
+
+\ex.\label{tab:formvii-unmarked}\textsc{Align-}$pre_1$ \OTdom \textsc{Align-RtL} \OTdom \textsc{*Complex}$^{ons}$\\\begin{OTtableau}{3}
+  \OTsolids{1, 2}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{fQl}}}$/}, /a/, /n/]{\textsc{Align}-$pre_1$,\textsc{Align-RtL},\textsc{*Complex}$^{ons}$}
+  \OTcandrow*[\OThand]{[(\textprimstress nfaQal)]}{ ,*,*}
+  \OTcandrow*{[(\textprimstress nafQal)]}{ ,**!, }
+  \OTcandrow*{[(\textprimstress fnaQal)]}{*!, ,*}
+\end{OTtableau}
+
+Thus, informally, in form VII it is more important to linearize the input prefix to the left edge of the prosodic word than it is to keep the root aligned there (because (c) loses). Additionally, this violation of \textsc{Align-RtL} must be minimal, even at the cost of a *\textsc{Complex} violation. This analysis is also in accord with the generalization about the distribution of complex margins given above.
+
+For output forms containing members of the class prefix$_2$ (form VIII in IA), this relevant ranking between \textsc{Align-RtL} and the affixal alignment constraint is reversed. The relevant constraint is as in \Next and the ranking argument given in \NNext.
+
+\ex. \textsc{Align-L}($prefix_2$, $\omega$) (\textsc{Align-}$pre_2$):\\Align the left edge of affixes belonging to the class \emph{prefix}$_2$ to the left edge of some prosodic word.
+
+\ex.\label{tab:formviii-unmarked}\textsc{Align-RtL} \OTdom \textsc{Align}-$pre_2$ \OTdom \textsc{*Complex}$^{ons}$\\\begin{OTtableau}{3}
+    \OTsolids{1, 2}
+    \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{fQl}}}$/}, /a/, /t/]{\textsc{Align-RtL},\textsc{Align}-$pre_2$,\textsc{*Complex}$^{ons}$}
+    \OTcandrow*[\OThand]{[(\textprimstress ftaQal)]}{ ,*,*}
+    \OTcandrow*{[(\textprimstress fatQal)]}{ ,**!, }
+    \OTcandrow*{[(\textprimstress tfaQal)]}{*!, ,*}
+  \end{OTtableau}
+
+Thus in these forms, unlike in the forms containing prefix$_1$ elements, it is more important to linearize the root at the left edge of $\omega$ than it is to keep the infix there. This is thus a output-optimizing formulation of \cite{mccarthy81}'s Eighth Binyan ``Flop.'' Candidate (c), which fails to perform this ``flop'' loses because of the high-ranking \textsc{Align-RtL}. Violation of \textsc{Align-}$pre_2$ must be minimal, however, as the failure of candidate (b) shows.
+
+For the roots containing two consonants, the arguments above carry over, \emph{mutatis mutandis}. Since \textsc{Integrity} \OTdom \textsc{NonFin}($\sigma$), as shown in the previous section, the RP approach expects nothing to change with biliteral roots in these forms. The only difference expected is the edge-aligned inclusion of the affixal material, which is exactly what is attested for biliteral roots in these forms. 
+
+Stepping back from the details of this analysis for a moment, one can see that a prediction of the RP analysis and the ranking *\textsc{Complex} \OTdom \textsc{Integrity} \OTdom \textsc{NonFin}($\sigma$) (established in \S{\ref{sec:form-i}}). This prediction is that where *\textsc{Complex} does not dictate otherwise, fission of the input /a/ should not occur. This is impossible when the only input material is a consonantal root and single vowel (for triliterals). However, when the input material contains a vowel (in addition to the aspectual vowel seen thus far), and there is a potential linearization of this input material which utilizes this vowel to avoid a *\textsc{Complex} violation, this candidate should win. This is \emph{exactly} what happens in the form X/{\em \textipa{stafQal}} pattern with triliterals, as \Next shows.
+
+\ex.\label{tab:formx-unmarked}\textsc{Align}-$pre_1$ \OTdom \textsc{Align-RtL} \OTdom \textsc{*Complex}$^{ons}$\\\begin{OTtableau}{4}
+    \OTsolids{1, 2}
+    \OTjagged{3}
+    \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{fQl}}}$/}, /a/, /sta/]{\textsc{Align}-$pre_1$,\textsc{Align-RtL},\textsc{*Complex}$^{ons}$,\textsc{Int}}
+    \OTcandrow*[\OThand]{[(\textprimstress staf)Qal]}{ ,*,*, }
+    \OTcandrow*{[(\textprimstress fas)(taQl)]}{*!, ,*}
+    \OTcandrow*{[(\textprimstress stafa)Qal]}{ ,*,*,*!}
+  \end{OTtableau}
+
+Thus, the fact that this form is not attested as *{\em \textipa{stafaQal}} is a further confirmation of the RP approach and its specific claims about the centrality of \textsc{NonFinality} to word-formation in Arabic. Generalizing from the arguments in this section, one can add the following ranking arguments to those at the end of the previous section:
+
+\ex. Further Ranking Arguments:\\\textsc{Align}-$pre_1$ \OTdom \textsc{Align-RtL} \OTdom \textsc{Align-}$pre_2$ \OTdom \textsc{*Complex}$^{ons}$
+
+\paragraph{Excursus: Form VIII-Specific Phonology}
+\label{sec:excursus:-form-viii}
+
+The assumption central to the RP approach that the root is a morpheme in the input also provides this model with the means to explain a set of particuarly recalcitrant facts in the phonology of the form VIII/{\em \textipa{ftaQal}} pattern first noticed in \cite{mccarthy79} and discussed above in \S{\ref{sec:prev-unnot-evid}}. Specifically, form VIII shows alternations in voicing and continuancy which are not reflected in the language at large.
+
+Recall from \S{\ref{sec:prev-unnot-evid}}, above, that the /-t-/ infix in the {\em \textipa{ftaQal}} pattern undergoes voicing (and emphasis) assimilation to the preceding root consonant. This data is repeated in \Next:
+
+
+\ex. Progressive Voicing/Emphasis Assimilation in Form VIII \citep[p. 74]{erwin04}
+\a. \textipa{ddiQa}, ``to claim'' (*\textipa{dtiQa}; $\sqrt{\textrm{\textipa{dQw}}}$)
+\b. \textipa{zdiZam}, ``to be crowded'' (*\textipa{ztiZam}; $\sqrt{\textrm{\textipa{zZm}}}$)
+
+Assuming that emphasis is represented phonologically as [+RTR] \citep{davis95}, these facts can be captured straightforwardly in the RP approach. All that is needed is the following three constraints:
+
+\ex. \label{ex:faith}\textsc{Faith}:\\Corresponding segments have identical feature specifications.
+
+\ex. \textsc{Agree-Voi(ce)}: cover constraint for \textsc{Agree}([voice]) and \textsc{Agree}([RTR]):\\Any two adjacent obstruents must have identical specifications for [voice] and [RTR].
+
+\ex. \label{ex:faith-rt}\textsc{Faith-R(oot)}:\\Corresponding segments in the root have identical feature specifications.
+
+\ref{ex:faith} is a general constraint standing for the unification of all the constraints belonging to the familiar \textsc{Ident} family, irrespective of morphological affiliation. \textsc{Agree-Voi} stands in as a placeholder constraint for any markedness constraint sufficiently defined to trigger such assimilation. The interesting constraint in the RP approach is the constraint in \Last, \textsc{Faith-Rt}, as this constraint cannot be defined as it is above in frameworks which do not admit the existence of the consonantal root. Because \textsc{Faith} is here relativized to the root consonants given in the input, the RP approach provides a formal means of distinguishing root consonants from other consonants in the output. It was the inability of word-based frameworks to do precisely this which \S{\ref{sec:prev-unnot-evid}} argued made those approaches untenable for Arabic, as it caused them to miss generalizations across different morphophonological processes.\footnote{Also, see \S{\ref{sec:inad-fixed-pros}}, below, for discussion of the problematic nature of this data in the particular framework of Fixed Prosody \citep{ussishkin00,buckley03,ussishkin05}.} This constraint is crucial to the analysis of these forms (though it need not be ranked), as \Next demonstrates:
+
+\ex. \textsc{Agree-Voi} \OTdom \textsc{Faith}\\\begin{OTtableau}{3}
+  \OTsolids{1}
+  \OTjagged{2}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{d\super{Q}rb}}}$/}, /a/, /t/]{\textsc{Agree-Voi},\textsc{Faith},\textsc{Faith-Rt}}
+  \OTcandrow*[\OThand]{d\super{Q}d\super{Q}arab}{ ,*, }
+    \OTcandrow*{ttarab}{ ,*,*!}
+  \OTcandrow*{d\super{Q}tarab}{*!, , }
+\end{OTtableau}
+
+Notice that the inclusion of \textsc{Faith-Rt} in \Last ensures that faithfulness to the root triggers a reversal of the language-at-large strategy for resolving voice mismatch. In any framework which does not admit the existence of the \emph{consonantal} root, and therefore treats all output consonants the same should predict that voicing assimilation in this pattern should be regressive. This candidate (b) should then surface, contrary to fact.
+
+A similar problem arises for word-based approaches in form VIII when the first member of the root is a semivowel (or /\textipa{P}/), as also discussed above in \S{\ref{sec:form-viii-assim}}. Recall that in these patterns, semivowels surface as doubling of the input infix, /-t-/ (and such assimilation does not occur in the language at large):
+
+\ex. Weak Consonants in Iraqi \citep[p.74]{erwin04}
+\a. \textipa{ttijah}, ``to head (for)'' ($\sqrt{\textrm{\textipa{wjh}}}$; *\textipa{utijah}, *\textipa{wtijah})
+\b. \textipa{ttiqan}, ``to master, know well'' ($\sqrt{\textrm{\textipa{yqn}}}$, *\textipa{itiqan}, *\textipa{ytiqan})
+\c. \textipa{ttixaD}, ``to take, adopt'' ($\sqrt{\textrm{\textipa{PxD}}}$, *\textipa{PtixaD})
+
+At first, such data might seem problematic for the RP approach, as \Last appears to be an instance of excessive unfaithfulness to roots. However, having \textsc{Faith-Rt} as an available constraint means that it can be dominated, and excessive unfaithfulness to roots \emph{is} expected, under limited circumstances. Note, too, that this option is not available for an approach which denies the existence of the consonantal root and therefore cannot separate root instances of semivowels from their non-assimilating, nonroot counterparts without also predicting that they should undergo regressive voicing assimilation, contrary to fact. In order to formalize this alternation in the RP approach, let us assume the following constraints:
+
+\ex. \label{ex:ssp}\textsc{S(onority) S(equencing) P(rinciple)}:\\Sonority does not fall from onset to nucleus; Sonority does not rise from nucleus to coda.
+
+\ex. \label{ex:ww}\textsc{*WW(/Onset)}:\\Geminate glides are forbidden in onset position.
+
+\ref{ex:ssp} is a simple Optimality-Theoretic version of the Sonority Sequencing Principle, which bans adjacent elements whose sonority curve is a reversal \citep{hankamer74}. \Last is a markedness constraint which bans onset geminate liquids at any level of representation. This constraint \textsc{*WW} must be ranked above \textsc{Faith-Rt}, as \Next demonstrates:
+
+\pagebreak
+
+\ex. \textsc{*WW} \OTdom \textsc{Faith-Rt}\\\begin{OTtableau}{2}
+  \OTsolids{1}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{ws\super{Q}l}}}$/}, /a/, /t/]{\textsc{*WW},\textsc{Faith-Rt}}
+   \OTcandrow*[\OThand]{ttas\super{Q}al}{ ,*}
+   \OTcandrow*{wwas\super{Q}al}{*!, }
+\end{OTtableau}
+
+Notice that this ranking yields the observed unfaithfulness to root segments, but only in the case of avoiding a geminate liquid sequence. As to the rest of the analysis of this assimilation, \Next provides the relevant rankings:
+
+\ex. \textsc{SSP}, \textsc{Align-Rt} \OTdom \textsc{Faith}, \textsc{Faith-Rt}\\\begin{OTtableau}{4}
+  \OTsolids{2}
+  \OTdashes{1,3}
+  \OTtoprow*[\*{/$\sqrt{\textrm{\textipa{ws\super{Q}l}}}$/}, /a/, /t/]{\textsc{SSP},\textsc{Align-Rt},\textsc{Faith},\textsc{Faith-Rt}}
+  \OTcandrow*[\OThand]{ttas\super{Q}al}{ , ,*,*}
+  \OTcandrow*{twas\super{Q}al}{ ,*!, , }
+  \OTcandrow*{Putas\super{Q}al}{ ,*!, , }
+  \OTcandrow*{wtas\super{Q}al}{*!, , , }
+\end{OTtableau}
+
+Thus the final rankings added to the overall grammar of IA in this excursus are:
+
+\ex. Rankings for Assimilation in Form VIII:
+\a. \textsc{Agree-Voi} \OTdom \textsc{Faith}
+\b. \textsc{*WW} \OTdom \textsc{Faith-Rt}
+\c. \textsc{Align-Rt}, \textsc{SSP} \OTdom \textsc{Faith}, \textsc{Faith-Rt}
+
+In analyzing these assimilation facts as either crucial domination by or crucial domination of \textsc{Faith-Rt} allows the RP approach to provide a unified explanation of these facts in terms of the consonantal root. This is a particularly appealing result because, as argued in \S{\ref{sec:prev-unnot-evid}} above and \S{\ref{sec:inad-fixed-pros}} below, the key generalization at play in these alternations is that the phonology has special access to consonants \emph{qua} root consonants in these forms. This generalization is thus captured under the RP approach, and provides a reason to prefer it.
+
+With this solution in place, the RP approach can successfully account for the the two and three-consonant roots in all their derivational patterns in Iraqi Arabic. The next section turns to rounding out the RP picture for quadriliteral roots.
+
+\subsubsection{Quadriliteral Roots}
+\label{sec:quadriliteral-roots}
+
+Having completely analyzed the two and three-consonant roots, the RP approach extends with little comment to the roots with four consonants in IA. To begin this discussion, however, it must first be noted that such roots are morphologically impoverished in IA. In fact only two such forms exist, as Table \ref{tab:quadriliterals} shows, using the root $\sqrt{\textrm{\textipa{brhn}}}$, ``to prove, establish.''
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}[ht]{cc}
+    &\textbf{Quadriliteral}\\
+    \hline
+    Root&$\sqrt{\textrm{\textipa{brhn}}}$\\
+    \hline
+    Q1&\textipa{barhan}\\
+    Q2&\textipa{tbarhan}\\
+    \hline
+  \end{tabular}
+  \caption{Quadriliteral Patterns in IA}
+  \label{tab:quadriliterals}
+\end{table}
+
+The RP analysis given in \S{\ref{sec:form-i}-\ref{sec:forms-vii-viii-x}} extends trivially to these forms, as \Next shows for the Q1 pattern:\footnote{Not shown in this tableau are competitors which attempt to parse anything less sonorous than a semivowel as a syllabic nucleus, as such nuclei are impossible in IA generally. This can easily be accommodated by assuming a high-ranking \textsc{Peak-Prominence} constraint banning such output.}
+
+\ex.\label{tab:4-consonants}\begin{OTtableau}{3}
+\OTdashes{1}
+\OTjagged{2}
+\OTtoprow*[\*{/$\sqrt{\textrm{\textipa{brhn}}}$/}, /a/]{\textsc{Align-Rt},\textsc{*Complex},\textsc{Contig}}
+\OTcandrow*[\OThand]{[(\textprimstress bar)han]}{ , ,***}
+\OTcandrow*{[(\textprimstress brhaan)]}{ ,*!,*}
+\OTcandrow*{[(\textprimstress braahn)]}{ ,*!,*}
+\OTcandrow*{[(\textprimstress baarhn)]}{ ,*!,*}
+\OTcandrow*{[(\textprimstress ab)(rahn)]}{*!, ,**}
+\OTcandrow*{[(\textprimstress brah)na]}{*!,*!,**}
+\end{OTtableau}
+
+\subsection{Theoretical Implications}
+\label{sec:theor-impl}
+
+Several theoretical implications follow neatly from the assumptions of the Root-and-Prosody Approach which are useful to work outside of NTM languages. The first of these is an explanation for a particularly recalcitrant fact concerning the templatic shape of words in Arabic. It has commonly been noted that default prosodic form in Arabic and Hebrew displays an apparent anti-tendency (to borrow a term from \cite{clements97}). Specifically, templates in such languages consistently end in a consonant, with the default prosodic word in Arabic, for instance, being CVCV\textbf{C}. This is particularly surprising from the perspective of syllable markedness, which notes that CV syllables (i.e., those \emph{without codas}) are the least marked. Thus, \cite{mccarthy94} express this formally as the ad-hoc constraint in \Next:
+
+\ex. \textsc{Final-C}:\\A prosodic word must end in a consonant.
+
+This constraint is not only \emph{prima facie} stipulative, but also undesirable from a markedness point of view, given that one would, all else being equal, prefer to have markedness constraints which ban marked, not unmarked, structures \citep{clements97}. The approach here does not need such a constraint, however, as it has instead the family of constraints \textsc{Align-Root} (see \S{\ref{sec:analys-root-deriv}} for exemplification of this point), which dictate that the root must be aligned to both the left and the right edge of the prosodic word. These constraints do away with the need for \Last, and moreover, explain why Semitic templates typically have such a marked form -- the root must be anchored to the right edge of the prosodic word, and this is a highly-valued constraint in these languages.
+
+Next, the RP approach also explains and does away with a mechanism of \textsc{Tier Conflation}, as proposed in \cite{mccarthy81}, \emph{et seq.} This process takes different autosegmental tiers and linearizes them with respect to one another, creating a pronounceable output string. Such a process is strange from the point of view of more concatenative languages, where it is not needed, and thus any theory which does away with it is desirable from the standpoint of GTT. RP is such a theory, since it claims that prosodic constraints drive Tier Conflation. Thus, no such mechanism is needed.
+
+Additionally, the RP approach has no need to assume that any form in the derivational verbal system of IA is asymmetrically derived from any other. This is particularly useful since, as discussed in \S{\ref{sec:inad-fixed-pros}}, this assumption is made in the Fixed-Prosodic literature. These works relate the derivational verbs to a form I/{\em \textipa{faQal}} base. This is a problematic assumption for reasons discussed in this later section, and to the extent that the RP approach does not need such a base, the RP approach is to be preferred to the Fixed Prosody approach.
+
+Finally, a further pleasant implication of the RP approach is an understanding of what it is, precisely, that makes an NTM language. NTM languages, are, from a typological perspective, quite marked, and RP explains why this is. Specifically, the RP approach requires that a class of morphological and prosodic markedness constraints, \textbf{MP-Markedness}, outrank \textsc{Contiguity} for an NTM to result. This is schematized in \Next:
+
+\ex. Ranking for NTM in the RP Approach:\\\textbf{MP-Markedness} \OTdom  \textsc{Contiguity}
+
+This is a welcome result because it is able to relate the morphologies in languages which have NTM to the morphologies of more concatenative languages by simple constraint reranking, the source of all variation in Optimality Theory. This means that, unlike earlier approaches which couched the difference between NTM and, e.g., English in the very generative engine itself \citep{mccarthy81}, in the RP approach, Arabic, Hebrew, and the like are not substantially different from languages with purely concatenative morphologies. All that is different is the ranking of \textsc{Contiguity} with respect to \textbf{MP-Markedness}.
+
+The next section turns to an examination of the major competitor to the RP approach, the Fixed-Prosodic approach of \cite{ussishkin00,buckley03,ussishkin05}, and shows it to be undesirable for a proper explanation of the facts in IA.
+
+
+\section{Comparisons with Fixed-Prosody}
+\label{sec:inad-fixed-pros}
+
+As outlined in the previous section, the Root-and-Prosody approach presents a coherent picture of Arabic derivational verbal paradigms couched within the later Optimality-Theoretic program of Generalized Template Theory \citep{mccarthy97}. However, within the research program that is OT, and GTT in particular, there is an already existing approach to the morphophonology of Semitic languages. As discussed in \S{\ref{sec:introduction}}, this is the Fixed Prosody (FP) approach of \cite{ussishkin00,buckley03,ussishkin05}. This approach attempts to derive the Arabic derivational verbal paradigm without reference to the consonantal root, which is argued to be a residue left over after stringent prosodic constraints apply (hence the term ``fixed prosody''). This section contrasts this view (after a brief exegesis of its particulars) with the RP approach developed in the previous section. The picture that emerges shows that the FP approach cannot account for the problem of pattern and root-specific phonological processes in IA form VIII.
+
+Before this task is undertaken, a word of explanation is necessary. It is not the purpose of this section to attempt to convince the reader of the necessity of a wholesale rejection of the FP approach. On the contrary, there are classes of effects in NTM languages which are \emph{prima facie} problematic for the version of the Root-and-Prosody approach outlined here. Specifically, these are the class of Output-Output Faithfulness effects in NTM languages. These are effects which seem to suggest that the input to derivation of at least some words in these languages must be whole words, not abstract roots. An example of this is the phenomenon of consonant cluster transfer first noticed in Hebrew by \cite{batel94}, and shown in \Next:
+
+\ex. \label{ex:cluster-transfer}Examples of Cluster Transfer in Modern Hebrew \citep[pp.578--9]{batel94}:
+\a.
+\a. \textipa{priklet}, ``to practice law'' (from base {\em \textipa{praklit}}, ``lawyer'')
+\b. \textipa{Srivrev}, ``to plumb'' (from base {\em \textipa{Sravrav}}, ``plumber'')
+\z.
+\b.
+\a. \textipa{striptez}, ``to perform a strip tease'' (from base {\em \textipa{streptiz}}, ``striptease'')
+\b. \textipa{stingref}, ``to take down shorthand'' (from base {\em \textipa{stenograf}}, ``stenographer'')
+\z.
+\c. 
+\a. \textipa{hiflik}, ``to slap'' (from base {\em \textipa{flik}}, ``slap'')
+\b. \textipa{hiSpric}, ``to squirt'' (from base {\em \textipa{Spric}}, ``squirt'')
+
+In each of the forms in \Last, an otherwise unexpected consonant cluster appears in the derived forms. In the case of \Last[a], the derived verbs appear in the CCVCCVC pattern, though as \cite{batel94} notes, a CVCCCVC pattern is expected. Thus, one sees in the form {\em \textipa{priklet}} preservation of the consonant cluster {\em \textipa{pr}} in the derived form, instead of the expected {\em *\textipa{pirklet}}. With \Last[b] there is no explanation for why such verbs do not surface as, say, {\em *\textipa{stirptez}}. \Last[c] is even more pronounced, with the selection of a derived binyan being made solely in order to preserve the consonant clusters in the base form.
+
+\cite{batel94} correctly concludes from the facts in \Last that such consonant-cluster-transferring derived forms must in fact be \emph{denominal verbs}, that is, verbs formed by correspondence to their base nominals. This generalization cannot be stated in terms of the consonantal root, since such a statement would expect the unattested cluster-destroying forms.
+
+It is data of this kind that provided the initial impetus for the Fixed-Prosodic approach discussed below, since it is clear from this data that not all words in Hebrew (or Arabic) are derived from an abstract consonantal root. However, the Fixed-Prosodic approaches throw the baby out with the bathwater in assuming that \emph{no} derivation in Semitic or NTM languages more broadly occurs from a consonantal root, as this section will show. What remains for future work, then, is the task of integrating the two approaches into a composite morphophonological analysis which can accommodate both root-and word-derived words in NTM languages.
+
+
+\subsection{The Emergence of Fixed Prosody}
+\label{sec:emerg-fixed-pros}
+
+The central claim of the Fixed-Prosodic literature (see, e.g., \cite[pp.210-3]{ussishkin05}) is that Nonconcatenative Templatic Morphologies derive templatic via an \textsc{Emergence of the Unmarked} (TETU; \cite{mccarthy94}) effect resulting from OO-correspondence between an input base word and possible output forms. The Emergence of the Unmarked results when high-ranking faithfulness constraints dominate prosodic constraints, thus rendering such prosodic constraints inactive in large portions of the language. However, when these high-ranking faithfulness constraints are not active (e.g., in some morphological or morphophonological domain in which such faithfulness is not applicable), the output forms are subordinate to the now high-ranking prosodic markedness constraints. The output will thus necessarily be \emph{unmarked}, and emergent only in particular morphological contexts.
+
+In the context of Semitic (specifically Hebrew) the particular ranking which enforces a TETU effect with respect to templatic form is that in \Next:
+
+\ex. Ranking for Templatic TETU in \cite[p.211]{ussishkin05}:\\\textsc{Faith-Affix} \OTdom \textbf{Prosodic Markedness 1} \OTdom \textsc{Faith-IO} \OTdom \textbf{Prosodic Markedness 2} \OTdom \textsc{Faith-OO}
+
+In \Last, the bold items stand for collections of prosodic markedness, which will be instantiated by language-particular rankings of prosodic markedness constraints within the general affixal ranking given in \Next:
+
+\ex. Ranking for Affix Realization in \cite[p.193]{ussishkin05}:\\\textsc{Faith-Affix} \OTdom \textsc{Faith-IO} \OTdom \textsc{Faith-OO}
+
+The ranking in \LLast (and the subpart which ensures affix realization in \Last) is what ensures NTM behavior when prosodic constraints are satisfied. Since \textsc{Faith-IO} and \textsc{Faith-OO} are subordinate to the prosodic markedness constraints in \textbf{Prosodic Markedness 1}, all output forms must satisfy such prosodic constraints, sometimes at the cost of unfaithfulness to input. However, the exact nature of the unfaithfulness to input material is given by the ranking of \textsc{Faith-Affix} over all other constraints: since affixes are vowels in these languages, vocalic material will be \emph{overwritten}, a violation of \textsc{Faith-OO} since inputs are output forms in this analysis.
+
+TETU occurs in this framework when \textsc{Faith-IO} is not active -- namely, derived forms in the language which have output words as their input. These forms contain no \textsc{IO} material except the affixes, and sudden the activity of \textbf{Prosodic Markedness 2} constraints can be felt. In this way, derived forms (i.e., those forms which have output words as their inputs) are predicted to satisfy both \textbf{Prosodic Markedness 1} and \textbf{Prosodic Markedness 2}. On the other hand, forms which are not derived from existing outputs are subject only to \textbf{Prosodic Markedness 1}, because of the activity of \textsc{Faith-IO}. \cite{ussishkin05} shows that this prediction is conformed for Hebrew.
+
+It is at this point that a substantial parallel between the RP and FP approaches can be seen. In line with the claim that templates are not primitive units of morphology made by Generalized Template Theory, the FP approach relates templatic form to TETU effects; in other words, templatic form emerges from the satisfaction of a class of prosodic markedness constraints. This is \emph{also} a major claim of the RP approach, which takes prosodic markedness constraints to be responsible for determining possible linearization of discontinuous morphemic material. It is precisely for this reason that both frameworks are successful at relating NTM morphology to the existence of prosodic effects the object languages at large.
+
+However where the two theories differ is in the predictions made concerning the segmental identity of consonantal material. Since the Fixed-Prosodic approach denies the existence of a consonantal root, there are only a very limited number of ways to treat root and nonroot consonants differently for the purposes of phonological processes. Specifically, the following kinds of material are predicted to be the only triggers for root-consonant unfaithfulness in the FP approach:
+
+\ex. Triggers for Root-Consonant Unfaithfulness in FP:
+\a. Necessary faithfulness to affixal material (because of high-ranking \textsc{Faith-Aff}).
+\b. Necessary satisfaction of \textbf{Prosodic Markedness 1}.
+\c. Necessary satisfaction of \textbf{Prosodic Markedness 2}.
+
+Turning to the Arabic semivowel assimilation facts in form VIII discussed in \S{\ref{sec:forms-vii-viii-x}}, it appears as though \Last[a] is confirmed. Addition of the affixal /-t-/ in the {\em \textipa{ftaQal}} form triggers assimilation of the semivowel to the infixal /-t-/, exactly as the presence of a high-ranking \textsc{Faith-Affix} constraint family would predict. However, things are more problematic for derivations of the voicing assimilation facts discussed in the same section. When a voiced root consonant appears next to infixal /-t-/, it is the affix which gains voicing, not the root which loses it. Not only is this a ranking contradiction from the perspective of directionality of voicing assimilation, but it is also not an instance of any of the predicted classes of root-consonant unfaithfulness in \Last, and thus problematic for any FP approach.
+
+It would perhaps be possible to draw up an analysis which relies on the notion of Positional Faithfulness \citep{beckman98}, which would treat the prosodic-word initial position as prominent and require reversal of voicing assimilation. However, two problems exist with this approach. The first is that such prosodic-word initial regressive voicing assimilation does \emph{not} otherwise occur in Iraqi Arabic outside of form VIII, and thus such a solution would seem suspicious from the point of view of positing a faithfulness criterion not otherwise seen in the language. The second concern is that such an approach would miss a generalization which unifies both the voicing an semivowel assimilation facts easily: the consonantal root. What unites the two processes involving assimilation in form VIII, as first noted by \cite{mccarthy79}, is the notion that particular phonological processes are triggered \emph{only} in the environment of particular root consonants. 
+
+One further point is worth making. A proponent of the fixed-prosodic approaches could maintain that an approach which combines both Output-Output correspondence and Stratal OT could account for these facts: the root-level phonology described in this section could be predicated of a different stratum than the word-level phonological processes. At this point, the ranking paradox described above would disappear, and high-ranking phonological markedness constraints could be used to capture these facts.
+
+This approach is unsatisfactory, however, for two reasons. The first is that it is not clear what level the root-level phonology would apply to. Since this model would hold that morphology is still word-based in Arabic, it would have to simultaneously treat the \emph{\textipa{faQal}} form as both a word, and therefore subject to word level phonology, and a stem, since it would have to be the stem level at which semivowel/coronal assimilation takes place. Thus, it is unclear which strata would be implicated in such an approach. However, even if such an issue could be resolved, there  would still remain the second problem, which is a conceptual one. The issue is that OO-correspondence and stratal OT are usually taken to be differing approaches to the same set of empirical problems. Thus, one \emph{could} enrich the expressive power of the grammar by allowing both to simultaneously exist, but it is not clear that the challenge posed by the above data is grave enough to warrant such a large enrichment of expressive power, especially when the more parsimonious option of the Root-and-Prosody approach exists.
+
+Finally, one further concern exists for any attempt to use the FP approach for the derivation of verbs in Iraqi Arabic. As noted above, the FP approach assumes that the input to derivation in NTM languages includes a base output form which is an already existing word in the language. In the case of Arabic, \cite[ch.6]{ussishkin00} provides arguments that this must be the form I/{\em \textipa{faQal}} pattern. However, as \cite{marantz97,arad03,arad05} have noted for Hebrew, such base forms do not always exist in the language. In the case of Arabic, this is demonstrated in \Next:
+
+\ex. Examples of Roots with no Form I {\em \textipa{faQal}} Pattern in Arabic \citep{wehr76}:
+\a. $\sqrt{\textrm{\textipa{\textcrh wj}}}$ $\rightarrow$ *\textcrh\textipa{awaj}
+\b. $\sqrt{\textrm{\textipa{rks}}}$ $\rightarrow$ *\textipa{rakas}
+\c. $\sqrt{\textrm{\textipa{Tbh}}}$ $\rightarrow$ *\textipa{Tabah}
+\d. $\sqrt{\textrm{\textipa{frS}}}$ $\rightarrow$ *\textipa{faraS}
+\e. $\sqrt{\textrm{\textipa{qDy}}}$ $\rightarrow$ *\textipa{qaDaa}
+\f. $\sqrt{\textrm{\textipa{lGm}}}$ $\rightarrow$ *\textipa{laGam}
+
+Given that such forms do not exist, but derived forms from such roots do, it is problematic to assume that a necessary derivation of a nonexistent form I/{\em \textipa{faQal}} pattern verb must occur before derivation of derived forms can even proceed. In the RP approach given here, since the root is a morpheme \emph{sui generis}, whatever notion one wishes to employ concerning idiosyncratic morpheme selectional facts can derive the lack of such forms. Furthermore, the nonexistence of forms like that in \Last has no impact on the derivation of other forms from those roots in the RP approach.
+
+Since the FP approach struggles both with root-specific phonological processes and the nonexistence of putative base forms, the simple idea that FP alone is enough to analyze the IA verbal paradigm must be rejected. Rather, an approach which attempts to unify the gains made in the FP literature with the proposals concerning root-derivation in the RP approach made here is most desirable. The development of such an analysis must be the goal of future work, but the foundation has been laid here with the exposition of the RP approach. Since this framework relies on similar notions about the derivation of templatic form from prosodic and syllabic constraints, such an approach seems not only desirable, but feasible as well.
+ 
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+This work has outlined a novel approach to the morphophonology of Arabic verbs called the \textsc{Root-and-Prosody} model, arguing it to be superior to other GTT-responsible models with respect to Iraqi Arabic. This approach has also argued for the necessity of the consonantal root \emph{qua} morpheme and the undesirability of the template. In examining the properties of the RP approach, a careful understanding of the Iraqi Arabic verbal system was given, the first of its kind in the generative phonological literature. 
+
+One important prediction of the RP approach is that roots and vocalic affixes are real units of NTM languages, whereas templatic form is rather \emph{emergent} given particular inputs and prosodic constraints. While psycholinguistic data on the affixal status of vocalic material is more mixed, in a large way the RP approach brings the phonological understanding of NTM languages in line with present understanding in psycholinguistic and experimental research. This view is able to emerge because the RP approach takes discontinuous linearization of root and affixal material to be governed entirely by independently needed constraints on prosodic form. An interesting prediction of this approach is that it becomes impossible, \emph{a priori}, to derive a nonconcatenative templatic morphology without high-ranking prosodic constraints that are demonstrably active elsewhere in the language at large. To the author's knowledge, this prediction is borne out for every NTM language studied to date.
+
+In the future, research will be needed to delimit the space of applicability of the RP approach -- here it is claimed that this approach is applicable to all root-derived words in NTM languages everywhere, but further work is needed to ensure this is the case for languages such as Hebrew, Maltese, Coptic, and Akkadian. However, to the extent that this work has proved successful, morphophonology can now more clearly ask the question: what is the root, and how do NTM languages make use of it?
+
+\clearpage
+
+\bibliography{/Users/matt/Documents/School/mattBib}
+
+\vspace{12pt}
+
+\noindent{\em Department of Linguistics}
+
+\noindent{\em University of California, Santa Cruz}
+
+\noindent{\em 1156 High Street}
+
+\noindent{\em Santa Cruz, CA 95064-1077}
+
+\vspace{6pt}
+
+\noindent{\tt matucker@ucsc.edu}
+
+\noindent{\tt http://people.ucsc.edu/\textasciitilde matucker/}
+\end{document}
+
+

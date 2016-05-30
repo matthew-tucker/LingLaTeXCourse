@@ -1,0 +1,177 @@
+%LaTeX Example file 5
+
+%tables and rudimentary tableaux
+%headers and footers
+
+\documentclass[12pt, twoside]{article}
+
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{link}
+\usepackage{phontricks}
+\usepackage{fancyhdr}
+\usepackage{tipa}
+\usepackage{linguex}
+
+%header stuff
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[OL]{Ted Mosby}
+\fancyhead[ER]{Alternate Page Header}
+\renewcommand{\headrulewidth}{0.4pt}
+\addtolength{\headheight}{2.5pt}
+
+
+\title{Tables, Headers and Footers, Centering}
+\author{Jim Lahey}
+
+\begin{document}
+	
+	\maketitle
+	
+	
+	\section{Centering}
+	
+	\begin{center}
+		We can center some text with the \texttt{center} command.
+	\end{center}
+	
+	
+	\section{Tables!}
+
+%a simple tables
+	\begin{center}
+		\begin{tabular}{r|r}
+			\hline
+			r1c1 & r1c2\\
+			\hline
+			r2c1 & r2c2\\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\begin{table}[ht]
+	  \centering
+	  \begin{tabular}[ht]{ccc}
+	    &\textbf{Sg.}&\textbf{Pl.}\\
+	    \textbf{1}&am&are\\
+	    \textbf{2}&are&are\\
+	    \textbf{3}&is&are\\
+	  \end{tabular}
+	  \caption{Present Tense Syncretic forms of English 'to be'}
+	  \label{tab:be}
+	\end{table}
+
+	\begin{table}[ht]
+	  \centering
+	  \begin{tabular}[ht]{ll}
+	    X+Y&X and Y are sisters\\
+	    X$<$Y&X is a daughter of Y\\
+	    X, Y, Z, W&variables over syntactic constituents\\
+	    \verb~[~X Y Z\verb~]~&X, Y, and Z are a constituent\\
+	    \verb![!X, Y, Z\verb!]!$_{\mathrm{XP}}$&X, Y, and Z are a constituent of type XP.
+	  \end{tabular}
+	  \caption{Useful Abbreviations for Writing Transformations}
+	  \label{tab:transformations}
+	\end{table}
+
+%multiple columns with the multicol environment
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}[ht]{ccccc}
+			\hline
+			\emph{VOT}&\multicolumn{4}{c}{\emph{ISI}}\\
+			\hline
+			&\multicolumn{2}{c}{100 ms}&\multicolumn{2}{c}{1200 ms}\\
+			&\emph{\% Correct}&$d'$&\emph{\% Correct}&$d'$\\
+			\hline
+			0/14&16.67&1.73&16.67&0.65\\
+			7/21&91.67&4.08&91.67&2.06\\
+			14/28&83.33&2.35&91.67&2.06\\
+			21/35&66.67&1.81&41.67&1.17\\
+			28/42&16.67&0.42&33.33&0.54\\
+			35/49&0.00&$-$1.32&16.67&1.73\\
+			42/56&18.18&1.79&16.67&1.73\\
+			\hline
+		\end{tabular}
+		\caption{Percent Correct and $d'$ for 2-Step Pairs in Experiments 3 and 4}
+		\label{tab:english2stepDIS}
+	\end{table}
+
+
+	%here's some more complicated examples
+	
+	\begin{table}[ht]
+	  \centering
+	  \begin{tabular}[ht]{lccc}
+	    \textit{Thematic Role}&\textit{Meaning}&\textit{Ext/Int?}&\textit{Structural Position}\\
+	\hline
+	     \textsc{Agent}&Do-er of action&External&\\
+	     \textsc{Theme}&Do-ee of action&Internal&\\
+	     \textsc{Experiencer}&Thing which experiences verb&External&\\
+	     \textsc{Source}&Thing experienced; origin of predicate&Internal&\\
+	     \textsc{Event}&An event required by predicate&External&\\
+	     \textsc{Goal}&Thing given ``to'' (indirect object)&Internal&\\
+	     \textsc{Instrument}&thing required for predicate&Internal&\\
+	     \hline
+	  \end{tabular}
+	  \caption{Types of $\theta$-roles}
+	  \label{tab:types}
+	\end{table}
+	
+	
+	\ex. \textsc{by}-$\Delta$ \textsc{Deletion} (Obligatory)\\$\begin{array}{cccccccc}
+	&\textrm{X}&\textrm{-}&[_{\textrm{PP}} \quad \emph{by}&-&\Delta]&-&Y\\
+	\textrm{SD}:&1&&2&&3&&4\\
+	\textrm{SC}:&1,&&\emptyset,&&\emptyset,&&4
+	\end{array}$\\If $\Delta$ cannot undergo this transformation, abort the derivation.
+	
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}[ht]{|lll||c:c:c:c:c|}
+			\hline
+			\multicolumn{3}{|c|}{/\textipa{faQal}/}&\textsc{Final-C}&\textsc{FtForm}&\textsc{FtBranch}&$\mu$-\textsc{Align}&\textsc{Parse}-$\sigma$\\
+			\hline
+			\hline
+			a.&&fa[\textipa{Q}\'al]&*!&&&&\\
+			\hline
+			b.&&[fa\textipa{Q}\'a]l&&*!&&&\\
+			\hline
+			c.&&[f\'a]\textipa{Q}al&&&*!&&*\\
+			\hline
+			d.&&[f\'a\textipa{Q}al]&&&&*!&\\
+			\hline
+			e.&$\rightarrow$&[f\'a\textipa{Q}a]l&&&&&\\
+			\hline
+		\end{tabular}
+		\caption{Ussishkin (2000)'s Derivation of Arabic Form I}
+		\label{tab:ussishkin-I}
+	\end{table}
+	
+	We can refer to tables like regular references, as in table \ref{tab:ussishkin-I}.
+	
+	
+	\begin{table}[ht]
+	  \centering
+	  \begin{tabular}[ht]{cc}
+	    \textsc{I}&\textsc{II}\\
+	     \hline
+	    \textprimstress\textipa{nikteb}, ``I write''&\textprimstress\textipa{niktbu}, ``I write it''\\
+	    \textprimstress\textipa{tikteb}, ``you write''&\textprimstress\textipa{tiktbu}, ``you write it''\\
+	    \textprimstress\textipa{nikSef}, ``I uncover''&\textprimstress\textipa{nikSfu}, ``I uncover it''\\
+	    \textprimstress\textipa{tikSef}, ``you uncover''&\textprimstress\textipa{tikSfu}, ``you uncover it''\\
+	    \textprimstress\textipa{nizbor}, ``I prune''&\textprimstress\textipa{nizbru}, ``I prune it''\\
+	    \textprimstress\textipa{tizbor}, ``you prune''&\textprimstress\textipa{tizbru}, ``you prune it''\\
+	    \hline
+	    \textprimstress\textipa{nitlef}, ``I lose''&\textipa{ni}\textprimstress\textipa{tilfu}, ``I lose it''\\
+	    &\textipa{ni}\textprimstress\textipa{tilfek}, ``I lose you (sg.)''\\
+	    \textprimstress\textipa{titlef}, ``you lose''&\textipa{ti}\textprimstress\textipa{tilfu}, ``you lose it''\\
+	    &\textipa{ti}\textprimstress\textipa{tilfek}, ``you lose it''\\
+	    \textprimstress\textipa{niSrob}, ``I drink''&\textipa{ni}\textprimstress\textipa{Sorbu}, ``I drink it''\\
+	    \textprimstress\textipa{tiSrob}, ``you drink''&\textipa{ti}\textprimstress\textipa{Sorbu}, ``you drink it''\\
+	    \hline
+	  \end{tabular}
+	  \caption{Maltese Data that is Hard}
+	  \label{tab:maltese-1}
+	\end{table}
+	
+\end{document}

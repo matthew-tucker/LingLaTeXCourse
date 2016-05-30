@@ -1,0 +1,59 @@
+%%LaTeX Example file 4
+
+%This document contains use of the multicols package
+%and talks about math mode a little.
+
+\documentclass[letterpaper]{article}
+
+\usepackage{multicol}
+\usepackage{fullpage}
+
+\title{Columns and Math Mode:\\Acting Like a Computer Scientist\thanks{Thanks to Mark Corrigan for help writing this document.}}
+\author{Jeremy Osbourne}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{multicols}{2}
+		
+		\LaTeX has a special mode for typesetting related to mathematics, called $Math Mode$. It can be turned on many ways. $Normal Math mode$ can be contrasted with $$\textrm{on its own line}$$ which typesets the segment of math mode on its own line. This can also be done with: \[\sqrt{25} = x = 5\].
+		
+		
+		\begin{equation}
+			\label{rule}
+			\mathrm{VP} \rightarrow \left\{\begin{array}{c}
+			\textrm{V (NP) (AP) (PP)}\\
+			\textrm{VP PP}
+			\end{array} \right\}
+		\end{equation}
+		
+		We can also reference our equations, as in eq. \ref{rule}, above. Some other nifty things include:
+		
+		\begin{equation}
+		  \label{eq:3}
+		  \frac{p_{a}}{w_{a}}
+		\end{equation}
+		
+		As well as the ability to typset multi-line equations:
+		
+		\begin{eqnarray}
+		  10xy^2+15x^2y-5xy & = & 5\left(2xy^2+3x^2y-xy\right) \nonumber \\
+		   & = & 5x\left(2y^2+3xy-y\right) \nonumber \\
+		   & = & 5xy\left(2y+3x-1\right)
+		\end{eqnarray}
+		
+	Brown for 1$^{\textrm{st}} course, white for pudding. X$_{s}$.
+		
+		
+	\end{multicols}
+	
+	Finally, it is sometimes useful to remember that:
+	
+	\begin{equation}
+		\mathrm{X''} \rightarrow \mathrm{YP} \mathrm{X}'
+	\end{equation}
+
+	
+	
+\end{document}

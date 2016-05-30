@@ -1,0 +1,93 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{jtree}
+\usepackage{qtree}
+\usepackage{gb4e}
+\usepackage{tipa}
+\usepackage{pstricks}
+\usepackage{link}
+\usepackage{linguex}
+
+
+\begin{document}
+
+% linguex examples:
+
+\ex. Bill thinks that they like each other.
+
+\ex. \a. *They think that Bill likes each other.
+\b. *They think that each other please Bill.
+
+\ex. \label{gen:aae-rescue}AAE Rescue Strategies:
+\a. No agreement (Inuit)
+\b. Default agreement (Italian)\footnote{I have omitted for space reasons the cases of Georgian and Albanian, which \cite{woolford99} shows also employ this strategy with much more grammatical results than in Italian.}
+\c. Anaphoric agreement (Swahili)
+\d. Poessessive reflexives (Selayarese)
+\e. Detransitivizing Morphology (French)
+
+
+\ex. Postverbal Theme Complementary Distribution:
+\ag. \label{ex:aae-italian2}*{\textipa{a loro}} \textipa{interessano} \textipa{solo} {\textipa{se stessi}}\\
+{to them(.\textsc{dat})} interest.\textsc{3.pl} only {themselves(.\textsc{nom})}\\
+``They are interested only in themselves.'' \hfill \citep[p.33]{rizzi90a}
+\bg. {\textipa{a me}} \textipa{interessano} \textipa{solo} \textipa{loro}\\
+{to me(.\textsc{dat})} interest.\textsc{3.pl} only they(.\textsc{nom})\\
+``I am interested only in them.'' \hfill \citep[p.32]{rizzi90a}
+
+\ex. Nez Perce Reflexive Prefix Series \citep[p.40]{rude85}:\\
+\begin{tabular}[h!]{lll}
+  &\textsc{sg}&\textsc{pl}\\
+\textsc{1}&\textipa{'in\'{e}e-}&\textipa{nem\'{e}e-}\\
+\textsc{2}&\textipa{'im\'{e}e-}&\textipa{'imem\'{e}e-}\\
+\textsc{3}&\textipa{'ipn\'{e}e-}&\textipa{'imem\'{e}e-}
+\end{tabular}
+
+%% Linuex NB: \Next is the next example, \NNext the example after that. Similarly with \Last and \LLast
+
+
+% gb4e examples:
+
+
+\begin{exe}
+  \ex Regular \emph{+ee} Affixation:
+  \begin{xlist}
+    \ex present $\rightarrow$ present\emph{ee}
+    \ex employ $\rightarrow$ employ\emph{ee}
+    \ex pay $\rightarrow$ pay\emph{ee}
+  \end{xlist}
+\end{exe}
+
+\begin{exe}
+  \ex \begin{xlist}
+   \ex I am strongly inclined to believe it.
+   \ex I am more strongly inclined to believe it.
+   \ex I am stronger inclined to believe it.
+  \end{xlist}
+  \ex \begin{xlist}
+    \ex He ran quickly (*quick).
+    \ex He ran more quickly.
+    \ex He ran quicker.
+  \end{xlist}
+  \ex \begin{xlist}
+    \ex He spoke softly (*soft).
+    \ex He spoke more softly.
+    \ex He spoke softer.
+  \end{xlist}
+\end{exe}
+
+\begin{exe}
+  \ex
+  \gll [[root + A]_X + B]_Y\\
+  1 { } 2 { } 3 $\rightarrow$ 1 $\phi$ 3\\
+  where X an Y are major lexical categories
+\end{exe}
+
+\begin{exe}
+  \ex Adverb \emph{+er} Truncation:
+  \gll {C_0VC_0 +} {ly +} {er_{Adv}}\\
+  1 2 3 $\rightarrow$ 1 $\phi$ 3\\
+\end{exe}
+
+\end{document}

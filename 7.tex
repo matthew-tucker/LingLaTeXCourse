@@ -1,0 +1,43 @@
+%LaTeX Example file 7
+
+%BibTeX!
+
+
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage{natbib}
+
+%bibstuff
+\bibpunct{(}{)}{;}{a}{,}{,}
+\setlength{\bibsep}{0.0pt}
+
+\title{Bibtex and Easy-Peasy Citation Managing}
+\author{Gareth Keenan\\Warnham Hogg Paper}
+\date{16 October 2009}
+
+\begin{document}
+	
+	%bibliography style
+	\bibliographystyle{linquiry2}
+	%\bibliographystyle{apalike}
+	
+	\maketitle
+	
+	\cite{huang83}
+	
+	\cite[pp.115--6]{kratzer96}
+	
+	\citep{borer05}
+	
+	\citep[p.15ff]{bennett09}
+	
+	\citet[pp.23]{dealToAppear}
+	
+	\citeyear{picallo85}
+	
+	\cite{naatanen97,borer05}
+	
+	\bibliography{/Users/matt/Documents/school/computerCzar/latexTutorial/demoBib.bib}
+	
+\end{document}
+

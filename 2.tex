@@ -1,0 +1,79 @@
+%LaTeX example file 2
+
+%basic text editing
+%this is also a skeleton for a two-up handout
+
+\documentclass[10pt, twoside]{article}
+
+\usepackage{tipa}
+\usepackage{geometry}
+\usepackage[normalem]{ulem}
+%usepackage{doublespace}
+%\usepackage{times}
+%usepackage{palatino}
+
+\geometry{margin=1in}
+
+\title{Basic Font Commands}
+\author{Charlie Kelly\\UC-Santa Cruz}
+
+
+\begin{document}
+	
+	\maketitle
+	
+		\section{Basic Text Formatting}
+	
+	Why don't I strap on my \textsc{job helmet} and squeeze down into a \textbf{job cannon} and fire off into \emph{Jobland} where \textit{jobs} grow on \uline{little jobbies.}
+	
+	The {\bf tipa} package can /\textipa{hElp wiT fonEtIks}/.
+	
+	\textsl{I'm cracking eggs of wisdom!}
+	
+	\uuline{Look at the door, dude.} \uwave{You see that door right there?} \sout{The one marked pirate?}\footnote{You think a pirate lives in there?} (This requires the package \texttt{ulem}).
+	
+	There are a couple of useful text diacritics: \'{e} \`{a} \"{o} \~{n} \^{i} \textsubdot{t} \={o}.
+	
+	Superscript and subscript require math mode (to be discussed later)
+	
+	\section{Sizes}
+	
+	Font sizes are changed by setting the font size with a command; you must then set it back with another text font command.
+	
+	\tiny
+	
+	They took you nightman and you don't belong to them.
+	
+	\scriptsize
+	
+	Wait wait wait! What are you gonna do? Punch him in the face? Throw him? Maybe work the body a little?
+	
+	\small
+	
+	I'm in love with a man\ldots a man named God.
+	
+	\normalsize
+	
+	This is the normal size for the document (10-12pt, as defined in the call to \texttt{documentclass}).
+	
+	\large
+	
+	Also, I am familiar with carpentry and I don't know who my father is. So, am I the messiah?
+	
+	\Large
+	
+	That's called flip-flopping, Mac! That's what Democrats do.
+	
+	\LARGE
+	
+	I become the spirit of the Nightman.
+	
+	\huge
+	
+	But I'm really Dayman.
+	
+	\Huge
+	
+	This is as big as it gets.
+	
+\end{document}

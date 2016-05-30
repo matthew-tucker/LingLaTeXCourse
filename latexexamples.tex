@@ -1,0 +1,90 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{jtree}
+\usepackage{qtree}
+\usepackage{gb4e}
+\usepackage{tipa}
+\usepackage{pstricks}
+\usepackage{link}
+\usepackage{linguex}
+
+
+\newcommand{\setof}[1]{\ensuremath{\left \{ #1 \right \}}}
+\newcommand{\rint}[4]{\ensuremath{\rrb^{{\mit{#1}},{#2},{#3},{#4}}}}
+
+
+\begin{document}
+\ex. \Tree [.V$^{'}$ V$^{\circ}$ [.CP \qroof{that sonata}.DP [.CP \qroof{which violin}.DP [.C$^{'}$ [.C ]]]]]
+
+\ex. 
+\center{
+\jtree
+\! = @A1
+   <right>
+   :{B}
+   :{C} {D}@A2 .
+\nccurve[dirA=(-1:-1),angleB=200,
+   ncurv=2,nodesepA=0]{A1}{A2}
+\endjtree\kern1em
+}
+
+
+\ex. \jtree[xunit=1.5em,yunit=1em]
+\! = {}
+   <left>[branch=\blank]!a ^<right>[xunit=14em,yunit=11.2,branch=\blank]{TP}@A3
+   <left>!b ^<right>{T}.
+\!b = {vP}
+<left>!c ^<right>{v}.
+\!c = {VP}
+<left>{} ^<right>{V$^{\circ}$}.
+\!a = {CP}
+<left>{DP$_{i}$}(<vartri>{what}) ^<right>[xunit=2em]{CP}
+<left>{C$^{\circ}$}  ^<right>{\&P}
+<left>@A2 ^<right>{\&P}
+<left>{\&} ^<right>{TP}
+<left>{T} ^<right>{vP}
+<left>{v} ^<right>{VP}
+<left>{V$^{\circ}$} ^<right>{$t_i$}.
+\psset{dirA=(1:1),angleB=90,ncurvA=.6,ncurvB=1}
+\nccurve{A2}{A3}
+\endjtree\\
+
+
+
+
+\ex.
+\center{
+\jtree
+\! = @A6
+    <right> 
+    :{C}^
+   <right>
+    @A8
+    <right>
+    :{T} 
+    {\dots} 
+    :{v$_{agt}$}@A1 ^
+    <right>
+    @A4
+    <right>
+    :(<vartri>{on [which violin]}@A7 )
+    <right>
+    :{v$_{verb}$}@A2 
+     :{$\sqrt{play}$}@A3 
+     <vartri>{that sonata}@A5 .
+\nccurve[dirA=(-1:-1),angleB=200,
+   ncurv=2,nodesepA=0]{A2}{A3}
+\nccurve[dirA=(-1:-1),angleB=200,
+   ncurv=2,nodesepA=0]{A1}{A3}
+\nccurve[dirA=(-1:-1),angleB=200,
+   ncurv=2,nodesepA=0]{A4}{A5}
+\nccurve[dirA=(-1:-1),angleB=200,
+   ncurv=2,nodesepA=0]{A6}{A7}
+\nccurve[dirA=(-1:-1),angleB=200,
+   ncurv=2,nodesepA=0]{A8}{A5}
+\endjtree
+}
+
+\end{document}
